@@ -1,0 +1,139 @@
+//right
+.content-right {
+    width: 100%;
+    padding-left: 20px;
+}
+.news-department {
+    margin-bottom: 50px;
+}
+.news-lable{
+    font-size: 2rem;
+    background-color: var(--primary);
+    padding: 8px ;
+    color: white;
+    border: 1px solid var(--primary);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    
+}
+
+.news-nav {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    border: 1px solid var(--primary);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    align-items: center;
+    position: relative;
+}
+.nav-item {
+    
+    font-size: 1.5rem;
+    color: #666;
+    padding: 6px 12px;
+    border-top: 1px solid #ccc;
+    width: 100%;
+    position: relative;
+    &:hover{
+        background-color: var(--color-hover-2);
+        
+    }
+    &.selected {
+        background-color: var(--primary); /* Màu nền khi được chọn */
+        color: #fff; /* Màu văn bản khi được chọn */
+       
+        
+        
+    }
+   
+    -webkit-line-clamp: 3; /* Giới hạn thành ba dòng */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+.nav-item strong {
+    font-size: 1.4rem;
+    
+}
+
+.comment-dateUser{
+    margin: 4px 0 8px;
+    font-size: 1.4rem;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.comment-date,
+.comment-user{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    
+}
+.comment-icon {
+    width: 1.6rem;
+    height: 1.6rem;
+
+}
+.commnet-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 1; 
+    text-align: start;
+}
+@media only screen and (max-width: 420px) {
+  
+    
+}
+@media only screen and (max-width: 720px) {
+   .news-nav{
+    flex-direction: column !important;
+   }
+   .news-department {
+        margin-bottom: 20px;
+   }
+    
+}
+@media only screen and (max-width: 767px) {
+    .news-lable {
+        text-align: center;
+    }
+    .content-right {
+        border: none;
+        padding: 0;
+    }
+    
+    .news-nav {
+        padding: 0;
+        flex-direction: row;
+        .nav-item {
+            border: none;
+            padding: 10px ;
+            text-align: center;
+
+        }
+    }
+    .nav-department {
+        display: flex;
+        flex-direction: column  !important
+    }
+}
+@media only screen and (min-width: 768px) and (max-width: 990px)  {
+    .news-lable {
+        text-align: center;
+    }
+    .content-right {
+        border: none;
+        padding: 0;
+    }
+}
+@media (min-width: 1024px) {
+    
+}

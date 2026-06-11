@@ -1,0 +1,357 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|e:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\be\\cuoikiasp\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|solutionrelative:cuoikiasp\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|e:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\be\\cuoikiasp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|solutionrelative:cuoikiasp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ADMIN\\AppData\\Roaming\\Microsoft\\UserSecrets\\e26e9432-cefe-4397-b2ec-d3cf36f48bcf\\secrets.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|e:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\be\\cuoikiasp\\respositories\\commentrespositories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|solutionrelative:cuoikiasp\\respositories\\commentrespositories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|e:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\be\\cuoikiasp\\models\\databasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|solutionrelative:cuoikiasp\\models\\databasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|e:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\be\\cuoikiasp\\respositories\\userrespositores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|solutionrelative:cuoikiasp\\respositories\\userrespositores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|e:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\be\\cuoikiasp\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|solutionrelative:cuoikiasp\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|e:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\be\\cuoikiasp\\respositories\\iuserrespositores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|solutionrelative:cuoikiasp\\respositories\\iuserrespositores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|e:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\be\\cuoikiasp\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|solutionrelative:cuoikiasp\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|e:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\be\\cuoikiasp\\dto\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|solutionrelative:cuoikiasp\\dto\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|e:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\be\\cuoikiasp\\controllers\\commentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|solutionrelative:cuoikiasp\\controllers\\commentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|e:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\be\\cuoikiasp\\controllers\\projectlistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|solutionrelative:cuoikiasp\\controllers\\projectlistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|e:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\be\\cuoikiasp\\respositories\\projectlistrespositories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|solutionrelative:cuoikiasp\\respositories\\projectlistrespositories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|e:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\be\\cuoikiasp\\respositories\\classrespositories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|solutionrelative:cuoikiasp\\respositories\\classrespositories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|e:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\be\\cuoikiasp\\dto\\projectlistdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|solutionrelative:cuoikiasp\\dto\\projectlistdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|e:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\be\\cuoikiasp\\models\\projectlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|solutionrelative:cuoikiasp\\models\\projectlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|e:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\be\\cuoikiasp\\models\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|solutionrelative:cuoikiasp\\models\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|e:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\be\\cuoikiasp\\models\\class.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|solutionrelative:cuoikiasp\\models\\class.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|e:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\be\\cuoikiasp\\controllers\\classcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|solutionrelative:cuoikiasp\\controllers\\classcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|e:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\be\\cuoikiasp\\respositories\\iclassrespositories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC615C60-0266-450A-887F-DAF639FFAC9C}|cuoikiAsp\\cuoikiAsp.csproj|solutionrelative:cuoikiasp\\respositories\\iclassrespositories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 270,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 119,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\appsettings.json",
+              "RelativeDocumentMoniker": "cuoikiAsp\\appsettings.json",
+              "ToolTip": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\appsettings.json",
+              "RelativeToolTip": "cuoikiAsp\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAABlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-04-12T02:18:49.738Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "CommentController.cs",
+              "DocumentMoniker": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\Controllers\\CommentController.cs",
+              "RelativeDocumentMoniker": "cuoikiAsp\\Controllers\\CommentController.cs",
+              "ToolTip": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\Controllers\\CommentController.cs",
+              "RelativeToolTip": "cuoikiAsp\\Controllers\\CommentController.cs",
+              "ViewState": "AQIAAGUAAAAAAAAAAAAswAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-12T02:18:49.744Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ProjectListDTO.cs",
+              "DocumentMoniker": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\DTO\\ProjectListDTO.cs",
+              "RelativeDocumentMoniker": "cuoikiAsp\\DTO\\ProjectListDTO.cs",
+              "ToolTip": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\DTO\\ProjectListDTO.cs",
+              "RelativeToolTip": "cuoikiAsp\\DTO\\ProjectListDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-12T02:18:49.747Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ProjectListController.cs",
+              "DocumentMoniker": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\Controllers\\ProjectListController.cs",
+              "RelativeDocumentMoniker": "cuoikiAsp\\Controllers\\ProjectListController.cs",
+              "ToolTip": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\Controllers\\ProjectListController.cs",
+              "RelativeToolTip": "cuoikiAsp\\Controllers\\ProjectListController.cs",
+              "ViewState": "AQIAAIsAAAAAAAAAAADwv50AAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-12T02:18:49.749Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "databaseContext.cs",
+              "DocumentMoniker": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\Models\\databaseContext.cs",
+              "RelativeDocumentMoniker": "cuoikiAsp\\Models\\databaseContext.cs",
+              "ToolTip": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\Models\\databaseContext.cs",
+              "RelativeToolTip": "cuoikiAsp\\Models\\databaseContext.cs",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAiwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-12T02:18:49.751Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "IClassRespositories.cs",
+              "DocumentMoniker": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\Respositories\\IClassRespositories.cs",
+              "RelativeDocumentMoniker": "cuoikiAsp\\Respositories\\IClassRespositories.cs",
+              "ToolTip": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\Respositories\\IClassRespositories.cs",
+              "RelativeToolTip": "cuoikiAsp\\Respositories\\IClassRespositories.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-12T02:18:49.753Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "ClassController.cs",
+              "DocumentMoniker": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\Controllers\\ClassController.cs",
+              "RelativeDocumentMoniker": "cuoikiAsp\\Controllers\\ClassController.cs",
+              "ToolTip": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\Controllers\\ClassController.cs",
+              "RelativeToolTip": "cuoikiAsp\\Controllers\\ClassController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-12T02:18:49.755Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Class.cs",
+              "DocumentMoniker": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\Models\\Class.cs",
+              "RelativeDocumentMoniker": "cuoikiAsp\\Models\\Class.cs",
+              "ToolTip": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\Models\\Class.cs",
+              "RelativeToolTip": "cuoikiAsp\\Models\\Class.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-12T02:18:49.756Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ClassRespositories.cs",
+              "DocumentMoniker": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\Respositories\\ClassRespositories.cs",
+              "RelativeDocumentMoniker": "cuoikiAsp\\Respositories\\ClassRespositories.cs",
+              "ToolTip": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\Respositories\\ClassRespositories.cs",
+              "RelativeToolTip": "cuoikiAsp\\Respositories\\ClassRespositories.cs",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAYwAoAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-12T02:18:49.758Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\Program.cs",
+              "RelativeDocumentMoniker": "cuoikiAsp\\Program.cs",
+              "ToolTip": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\Program.cs",
+              "RelativeToolTip": "cuoikiAsp\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-12T02:18:49.76Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "secrets.json",
+              "DocumentMoniker": "C:\\Users\\Admin\\AppData\\Roaming\\Microsoft\\UserSecrets\\e26e9432-cefe-4397-b2ec-d3cf36f48bcf\\secrets.json",
+              "ToolTip": "C:\\Users\\Admin\\AppData\\Roaming\\Microsoft\\UserSecrets\\e26e9432-cefe-4397-b2ec-d3cf36f48bcf\\secrets.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-05-20T07:34:22.178Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Comment.cs",
+              "DocumentMoniker": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\Models\\Comment.cs",
+              "RelativeDocumentMoniker": "cuoikiAsp\\Models\\Comment.cs",
+              "ToolTip": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\Models\\Comment.cs",
+              "RelativeToolTip": "cuoikiAsp\\Models\\Comment.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-12T02:18:49.762Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ProjectList.cs",
+              "DocumentMoniker": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\Models\\ProjectList.cs",
+              "RelativeDocumentMoniker": "cuoikiAsp\\Models\\ProjectList.cs",
+              "ToolTip": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\Models\\ProjectList.cs",
+              "RelativeToolTip": "cuoikiAsp\\Models\\ProjectList.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAYwBEAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-12T02:18:49.763Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CommentRespositories.cs",
+              "DocumentMoniker": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\Respositories\\CommentRespositories.cs",
+              "RelativeDocumentMoniker": "cuoikiAsp\\Respositories\\CommentRespositories.cs",
+              "ToolTip": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\Respositories\\CommentRespositories.cs",
+              "RelativeToolTip": "cuoikiAsp\\Respositories\\CommentRespositories.cs",
+              "ViewState": "AQIAAD0BAAAAAAAAAAAjwFEBAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-12T02:18:49.766Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "cuoikiAsp\\Controllers\\UserController.cs",
+              "ToolTip": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\Controllers\\UserController.cs",
+              "RelativeToolTip": "cuoikiAsp\\Controllers\\UserController.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAAAYwD0AAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-12T02:18:49.769Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ProjectListRespositories.cs",
+              "DocumentMoniker": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\Respositories\\ProjectListRespositories.cs",
+              "RelativeDocumentMoniker": "cuoikiAsp\\Respositories\\ProjectListRespositories.cs",
+              "ToolTip": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\Respositories\\ProjectListRespositories.cs",
+              "RelativeToolTip": "cuoikiAsp\\Respositories\\ProjectListRespositories.cs",
+              "ViewState": "AQIAAJYBAAAAAAAAAAAnwKUBAAA/AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-12T02:18:49.771Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UserRespositores.cs",
+              "DocumentMoniker": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\Respositories\\UserRespositores.cs",
+              "RelativeDocumentMoniker": "cuoikiAsp\\Respositories\\UserRespositores.cs",
+              "ToolTip": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\Respositories\\UserRespositores.cs",
+              "RelativeToolTip": "cuoikiAsp\\Respositories\\UserRespositores.cs",
+              "ViewState": "AQIAADsAAAAAAAAAAAAwwEsAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-12T02:18:49.773Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IUserRespositores.cs",
+              "DocumentMoniker": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\Respositories\\IUserRespositores.cs",
+              "RelativeDocumentMoniker": "cuoikiAsp\\Respositories\\IUserRespositores.cs",
+              "ToolTip": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\Respositories\\IUserRespositores.cs",
+              "RelativeToolTip": "cuoikiAsp\\Respositories\\IUserRespositores.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-12T02:18:49.775Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "User.cs",
+              "DocumentMoniker": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\Models\\User.cs",
+              "RelativeDocumentMoniker": "cuoikiAsp\\Models\\User.cs",
+              "ToolTip": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\Models\\User.cs",
+              "RelativeToolTip": "cuoikiAsp\\Models\\User.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAAwBYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-12T02:18:49.777Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UserDTO.cs",
+              "DocumentMoniker": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\DTO\\UserDTO.cs",
+              "RelativeDocumentMoniker": "cuoikiAsp\\DTO\\UserDTO.cs",
+              "ToolTip": "E:\\website kho\u00E1 lu\u1EADn\\web-khoa-luan-reactjs-asp\\BE\\cuoikiAsp\\DTO\\UserDTO.cs",
+              "RelativeToolTip": "cuoikiAsp\\DTO\\UserDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-12T02:18:49.779Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 364,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
