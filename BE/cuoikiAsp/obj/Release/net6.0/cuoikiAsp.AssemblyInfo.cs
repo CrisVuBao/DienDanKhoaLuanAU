@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("cuoikiAsp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9bd4e8aad7f899ec3babfffb09027c45e79ebe7c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a133e60213da604ec29ad31e167db43899d774d2")]
 [assembly: System.Reflection.AssemblyProductAttribute("cuoikiAsp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("cuoikiAsp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

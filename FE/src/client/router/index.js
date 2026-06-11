@@ -15,10 +15,6 @@ import AdminCreateEditForum from "../Page/Admin/AdminCreateEditForum";
 import AdminProjectListCheck from "../Page/Admin/AdminProjectListCheck";
 import quydinh from "../Page/User/quydinh";
 
-const isLoggedIn = localStorage.getItem("statusLogin") === "login";
-const checkUserGroup = localStorage.getItem("UserGroup") === "GV";
-const checkAdmin = localStorage.getItem("adminLogin") === "login";
-
 const basicRouter = [
   //user
   { path: "/", component: Home, layout: DefaultLayout, type: "homeUser" },
@@ -54,81 +50,74 @@ const basicRouter = [
     type: "projectPost",
   },
   { path: "/adminLogin", component: AdminLogin, type: "adminLogin" },
-  // {path: '/projectPost', component: ProjectPost, layout: DefaultLayout, type: 'projectPost'},
-  //admin
 ];
-const loggedInRoutes =
-  isLoggedIn && checkUserGroup
-    ? [
-        {
-          path: "/projectsManager",
-          component: ProjectsManager,
-          layout: DefaultLayout,
-          type: "projectsManager",
-        },
-        {
-          path: "/projectCreateEdit",
-          component: ProjectCreateEdit,
-          layout: DefaultLayout,
-          type: "projectCreateUser",
-        },
-        {
-          path: "/projectCreateEdit/:projectId",
-          component: ProjectCreateEdit,
-          layout: DefaultLayout,
-          type: "projectEditUser",
-        },
-      ]
-    : [];
-const adminRouter = checkAdmin
-  ? [
-      {
-        path: "/admin",
-        component: HomeAdmin,
-        layout: DefaultLayoutAdmin,
-        type: "admin",
-      },
-      {
-        path: "/AdminCreateEditUser",
-        component: AdminCreateEditUser,
-        layout: DefaultLayoutAdmin,
-        type: "AdminCreateUser",
-      },
-      {
-        path: "/AdminCreateEditUser/:idUser",
-        component: AdminCreateEditUser,
-        layout: DefaultLayoutAdmin,
-        type: "AdminEditUser",
-      },
 
-      {
-        path: "/adminForum",
-        component: AdminForum,
-        layout: DefaultLayoutAdmin,
-        type: "adminForum",
-      },
-      {
-        path: "/AdminCreateEditForum",
-        component: AdminCreateEditForum,
-        layout: DefaultLayoutAdmin,
-        type: "AdminCreateForum",
-      },
-      {
-        path: "/AdminCreateEditForum/:idForum",
-        component: AdminCreateEditForum,
-        layout: DefaultLayoutAdmin,
-        type: "AdminEditForum",
-      },
-      {
-        path: "/adminDuyet",
-        component: AdminProjectListCheck,
-        layout: DefaultLayoutAdmin,
-        type: "adminDuyet",
-      },
-    ]
-  : [];
+const loggedInRoutes = [
+  {
+    path: "/projectsManager",
+    component: ProjectsManager,
+    layout: DefaultLayout,
+    type: "projectsManager",
+  },
+  {
+    path: "/projectCreateEdit",
+    component: ProjectCreateEdit,
+    layout: DefaultLayout,
+    type: "projectCreateUser",
+  },
+  {
+    path: "/projectCreateEdit/:projectId",
+    component: ProjectCreateEdit,
+    layout: DefaultLayout,
+    type: "projectEditUser",
+  },
+];
+
+const adminRouter = [
+  {
+    path: "/admin",
+    component: HomeAdmin,
+    layout: DefaultLayoutAdmin,
+    type: "admin",
+  },
+  {
+    path: "/AdminCreateEditUser",
+    component: AdminCreateEditUser,
+    layout: DefaultLayoutAdmin,
+    type: "AdminCreateUser",
+  },
+  {
+    path: "/AdminCreateEditUser/:idUser",
+    component: AdminCreateEditUser,
+    layout: DefaultLayoutAdmin,
+    type: "AdminEditUser",
+  },
+  {
+    path: "/adminForum",
+    component: AdminForum,
+    layout: DefaultLayoutAdmin,
+    type: "adminForum",
+  },
+  {
+    path: "/AdminCreateEditForum",
+    component: AdminCreateEditForum,
+    layout: DefaultLayoutAdmin,
+    type: "AdminCreateForum",
+  },
+  {
+    path: "/AdminCreateEditForum/:idForum",
+    component: AdminCreateEditForum,
+    layout: DefaultLayoutAdmin,
+    type: "AdminEditForum",
+  },
+  {
+    path: "/adminDuyet",
+    component: AdminProjectListCheck,
+    layout: DefaultLayoutAdmin,
+    type: "adminDuyet",
+  },
+];
+
 const publicRouter = [...basicRouter, ...loggedInRoutes, ...adminRouter];
-// const privateRouter = [
 
-// ]
 export { publicRouter };

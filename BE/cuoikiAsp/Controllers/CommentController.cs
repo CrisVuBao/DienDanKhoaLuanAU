@@ -36,6 +36,7 @@ namespace cuoikiAsp.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
         [HttpPost]
         public async Task<ActionResult> addComment([FromBody] Comment newComment)
         {
@@ -67,6 +68,7 @@ namespace cuoikiAsp.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
         [HttpPut("{id}")]
         public async Task<ActionResult> updateComment(int id, [FromBody] Comment updatedComment)
         {
@@ -81,6 +83,7 @@ namespace cuoikiAsp.Controllers
                 return NotFound();
             }
         }
+
         [HttpPut("Evaluate/{id} {Evaluate}")]
         public async Task<ActionResult> updateEvaluate(int id, int Evaluate)
         {
@@ -95,6 +98,7 @@ namespace cuoikiAsp.Controllers
                 return NotFound();
             }
         }
+
         [HttpDelete("byCommentId/{id}")]
         public async Task<ActionResult> deleteComment(int id)
         {
@@ -109,6 +113,7 @@ namespace cuoikiAsp.Controllers
                 return NotFound();
             }
         }
+
         [HttpDelete("byUserId/{id}")]
         public async Task<ActionResult> deleteCommentByUserId(int id)
         {
@@ -123,6 +128,7 @@ namespace cuoikiAsp.Controllers
                 return NotFound();
             }
         }
+
         [HttpDelete("bybyCommentId/{id}")]
         public async Task<ActionResult> deleteCommentBybyCommentId(int id)
         {
@@ -137,6 +143,7 @@ namespace cuoikiAsp.Controllers
                 return NotFound();
             }
         }
+
         [HttpDelete("delete-multiple")]
         public async Task<ActionResult> deleteComment([FromBody] int[] commentIds)
         {
@@ -156,6 +163,7 @@ namespace cuoikiAsp.Controllers
                 return NotFound("Không tìm thấy comment để xóa.");
             }
         }
+
         [HttpDelete("delByPostTypeAndId/delete-multiple")]
         public async Task<ActionResult> delByPostTypeAndId([FromBody] int[] PostIds, string typePost)
         {
@@ -175,6 +183,7 @@ namespace cuoikiAsp.Controllers
                 return NotFound("Không tìm thấy comment để xóa.");
             }
         }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<Comment>> GetCommentById(int id)
         {
@@ -187,6 +196,7 @@ namespace cuoikiAsp.Controllers
 
             return Ok(comment);
         }
+
         [HttpGet("getByTypePost/{CommentType} {PostId}")]
         public async Task<ActionResult<Comment>> GetByUsername(string CommentType, int PostId)
         {
@@ -199,6 +209,7 @@ namespace cuoikiAsp.Controllers
 
             return Ok(comment);
         }
+
         [HttpGet("getByByCommentId/{CommentId}")]
         public async Task<ActionResult<Comment>> GetBybyCommentId( int CommentId)
         {
@@ -211,6 +222,7 @@ namespace cuoikiAsp.Controllers
 
             return Ok(comment);
         }
+
         [HttpGet("getByTypePostCommentId/{CommentType} {PostId} {ByCommentId}")]
         public async Task<ActionResult<Comment>> GetByTypePostCommentId(string CommentType, int PostId, int ByCommentId)
         {
@@ -223,6 +235,7 @@ namespace cuoikiAsp.Controllers
 
             return Ok(comment);
         }
+
         [HttpGet("getByTypePostCommentIdotherNull/{CommentType} {PostId}")]
         public async Task<ActionResult<Comment>> GetByTypePostCommentIdotherNull(string CommentType, int PostId)
         {
