@@ -61,12 +61,12 @@ function NavMenu() {
                         >
                             DIỄN ĐÀN
                         </Link>
-                        <Link to={'/quydinh'}
+                        {/* <Link to={'/quydinh'}
                             onClick={toggleMenu}
                             className={cx('nav-item', { 'selected': type.includes('quydinh') })}
                         >
                             QUY ĐỊNH
-                        </Link>
+                        </Link> */}
                     </ul>
 
                 </div>

@@ -119,7 +119,7 @@ namespace UniBase.Respositories
             catch (Exception ex)
             {
                 // Xử lý lỗi
-                return false;
+                throw new Exception($"Lỗi AddProject: {ex.InnerException?.Message ?? ex.Message}");
             }
         }
   
