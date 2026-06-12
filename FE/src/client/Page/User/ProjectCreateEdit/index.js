@@ -5,20 +5,20 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { NotificationManager, NotificationContainer } from 'react-notifications';
 import * as ServiceProjectListApi from './../../../apiServieces/ProjectListApi'
-import { MyContext } from "../../../../App"; 
+import { MyContext } from "../../../../App";
 import * as ServiceApiDeparment from "./../../../apiServieces/Deparment"
 import { Button, Select } from 'antd';
-import { useEffect,useContext,useRef,useState } from 'react';
+import { useEffect, useContext, useRef, useState } from 'react';
 import { format } from "date-fns";
 const cx = classNames.bind(styles);
-const {Option} = Select
+const { Option } = Select
 
 function ProjectCreateEdit() {
 
     const type = useContext(MyContext)
 
     const [content, setContent] = useState('');
-    
+
     const [department, setDepartment] = useState([])
     const [departmentSelect, setDepartmentSelect] = useState([])
     const [fileSelect, setFileSelect] = useState('')
@@ -40,10 +40,12 @@ function ProjectCreateEdit() {
         const rs = await ServiceProjectListApi.CreateProjectList(option)
         return rs
     }
+
     const fecthProjectUpdate = async (id, option) => {
         const rs = await ServiceProjectListApi.Update(id, option)
         return rs
     }
+
     const fecthProjectGetById = async (id) => {
         const rs = await ServiceProjectListApi.GetById(id)
         setContent(rs.Discriptions)
@@ -54,52 +56,52 @@ function ProjectCreateEdit() {
     }
     const handleSubmit = async () => {
         const formData = new FormData()
-        formData.append('Name',titleRef.current.value)
+        formData.append('Name', titleRef.current.value)
         formData.append('UserId', localStorage.getItem('userId'))
         formData.append('Discriptions', content)
         formData.append('CreatedDate', format(new Date(), "yyyy-MM-dd'T'HH:mm:ss"))
         formData.append('DepartmentId', departmentSelect)
         formData.append('ImageFile', fileSelect)
         formData.append('CheckAdmin', 0)
-        
+
         for (const [key, value] of formData.entries()) {
-            if(type !== 'projectEditUser') {
+            if (type !== 'projectEditUser') {
                 if (value === '' || (Array.isArray(value) && value.length === 0) || value === 'null') {
                     isEmptyField = true
-                    
-                }else {
-                    if (value === '' || (Array.isArray(value) && value.length === 0) ) {
-                        isEmptyField = true
-                }
 
-            }
+                } else {
+                    if (value === '' || (Array.isArray(value) && value.length === 0)) {
+                        isEmptyField = true
+                    }
+
+                }
             }
         }
         // for (const pair of formData.entries()) {
         //     console.log(pair[0] + ':', pair[1]);
         //   }
-        if(isEmptyField) {
+        if (isEmptyField) {
             NotificationManager.warning('Các trường không được để trống', 'Cảnh báo', 1000);
-        }else {
-            if(type === 'projectEditUser') {
+        } else {
+            if (type === 'projectEditUser') {
                 const rs = await fecthProjectUpdate(projectId, formData)
-                if(rs !== null && rs !== undefined) {
+                if (rs !== null && rs !== undefined) {
                     NotificationManager.success(rs, 'Thành công', 1000);
-                }else {
+                } else {
                     NotificationManager.error("Đã xảy ra lỗi", 'Thất bại', 1000);
                 }
-            }else {
+            } else {
                 const rs = await fecthProjectListCreate(formData)
-                if(rs !== null && rs !== undefined) {
+                if (rs !== null && rs !== undefined) {
                     NotificationManager.success(rs, 'Thành công', 1000);
-                }else {
+                } else {
                     NotificationManager.error("Đã xảy ra lỗi", 'Thất bại', 1000);
                 }
             }
         }
     }
     const handleChooseFile = (e) => {
-        if(e.target.files && e.target.files[0]) {
+        if (e.target.files && e.target.files[0]) {
             let imgFile = e.target.files[0]
             if (imgFile) {
                 const isPDF = imgFile.name.toLowerCase().endsWith('.pdf');
@@ -108,88 +110,88 @@ function ProjectCreateEdit() {
                 } else {
                     NotificationManager.warning("Hãy chọn file pdf", 'Cảnh báo', 1000);
                 }
-              }
-           
-            
+            }
+
+
         }
     }
     useEffect(() => {
         titleRef.current.focus()
-        if(type === 'projectEditUser') {
+        if (type === 'projectEditUser') {
             fecthProjectGetById(projectId)
         }
         fecthDepartmentGetAll()
 
-    },[type,projectId])
-    
-    return ( 
+    }, [type, projectId])
+
+    return (
         <div className={cx('wrapper')}>
-        <NotificationContainer/>
-        <div className={cx('form-create')}>
-            <div className={cx('lable-box')}>
-                <div onClick={handleSubmit} className={cx('form-button')}><Button type='primary'>Cập nhật</Button></div>
-            </div>
-            <div className={cx('form-submit')}>
-                <div className={cx('form-input')}>
-                    <textarea type='text' ref={titleRef}  placeholder="Tiêu Đề" rows={2} />
+            <NotificationContainer />
+            <div className={cx('form-create')}>
+                <div className={cx('lable-box')}>
+                    <div onClick={handleSubmit} className={cx('form-button')}><Button type='primary'>Cập nhật</Button></div>
                 </div>
-                <ReactQuill
-                    value={ content}
-                    onChange={handleChange}
-                    modules={{
-                        toolbar: [
-                        ['bold', 'italic', 'underline', 'strike'],
-                        [{'header': [1, 2, 3, 4, 5, 6, false]}],
-                        [{'list': 'ordered'}, {'list': 'bullet'}],
-                        [{'indent': '-1'}, {'indent': '+1'}],
-                        ['link', 'image', 'video'],
-                        ['clean'],
-                        ['code-block'],
-                        ['formula'],
-                        [{ 'color': [] }, { 'background': [] }],
-                        [{ 'align': [] }],
-                        
-                        ],
-                    }}
-                    formats={[
-                        'header', 'bold', 'italic', 'underline', 'strike', 'blockquote',
-                        'list', 'bullet', 'indent', 'link', 'image', 'video', 'code-block', 'formula',
-                        'color', 'background', 'align'
-                    ]}
-                    style={{fontSize: '16px', height: '480px', fontFamily: 'Arial, sans-serif', border: 'none' }}
-                    placeholder="Nội dung viết ở đây"
-                />
+                <div className={cx('form-submit')}>
+                    <div className={cx('form-input')}>
+                        <textarea type='text' ref={titleRef} placeholder="Tiêu Đề" rows={2} />
+                    </div>
+                    <ReactQuill
+                        value={content}
+                        onChange={handleChange}
+                        modules={{
+                            toolbar: [
+                                ['bold', 'italic', 'underline', 'strike'],
+                                [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                                [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                                [{ 'indent': '-1' }, { 'indent': '+1' }],
+                                ['link', 'image', 'video'],
+                                ['clean'],
+                                ['code-block'],
+                                ['formula'],
+                                [{ 'color': [] }, { 'background': [] }],
+                                [{ 'align': [] }],
+
+                            ],
+                        }}
+                        formats={[
+                            'header', 'bold', 'italic', 'underline', 'strike', 'blockquote',
+                            'list', 'bullet', 'indent', 'link', 'image', 'video', 'code-block', 'formula',
+                            'color', 'background', 'align'
+                        ]}
+                        style={{ fontSize: '16px', height: '480px', fontFamily: 'Arial, sans-serif', border: 'none' }}
+                        placeholder="Nội dung viết ở đây"
+                    />
+                </div>
+
             </div>
-           
+            <div className={cx('upload-select')} >
+                <div className={cx('select-box')}>
+                    <span>Khoa:</span>
+                    <Select
+                        className={cx('form-select')}
+                        showSearch
+                        value={departmentSelect}
+                        style={{ width: 200 }}
+                        placeholder="Chọn khoa"
+                        optionFilterProp="children"
+                        onChange={handleChangeDepartment}
+                        filterOption={(input, option) =>
+                            option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                        }
+                    >
+                        {department.map((item, index) => (
+                            <Option key={index} value={item.DepartmentId}>{item.Name}</Option>
+                        ))}
+
+                    </Select>
+                </div>
+                <div className={cx('select-box')}>
+                    <span>Tải File:</span>
+                    <input onChange={handleChooseFile} className={cx('upload-input')} type='file' />
+                </div>
+            </div>
         </div>
-        <div className={cx('upload-select')} >
-            <div className={cx('select-box')}>
-                <span>Khoa:</span>
-                <Select
-                    className={cx('form-select')}
-                    showSearch
-                    value={departmentSelect}
-                    style={{ width: 200 }}
-                    placeholder="Chọn khoa"
-                    optionFilterProp="children"
-                    onChange={handleChangeDepartment}
-                    filterOption={(input, option) =>
-                        option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                    }
-                >
-                    {department.map((item, index) => (
-                        <Option key={index} value={item.DepartmentId}>{item.Name}</Option>
-                    ))}
-                    
-                </Select>
-            </div>
-            <div className={cx('select-box')}>
-                <span>Tải File:</span>
-                <input onChange={handleChooseFile}  className={cx('upload-input')} type='file'/>
-            </div>
-        </div>
-    </div>
-     );
+    );
 }
 
 export default ProjectCreateEdit;

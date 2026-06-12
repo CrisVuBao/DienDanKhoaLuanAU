@@ -87,6 +87,7 @@ namespace UniBase.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
         [HttpPut("{id}")]
         public async Task<ActionResult> updateProject(int id, [FromForm] ProjectListDTO updatedProject)
         {
@@ -101,6 +102,7 @@ namespace UniBase.Controllers
                 return NotFound();
             }
         }
+
         [HttpPut("checkAdmin")]
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult<ProjectList>> UpdateProjectsCheckAdmin([FromBody] List<ProjectList> model)

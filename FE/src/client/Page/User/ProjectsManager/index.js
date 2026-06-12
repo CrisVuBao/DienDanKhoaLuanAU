@@ -223,7 +223,7 @@ function Projects() {
               </div>
             </div>
           ))}
-        {dataProject.length === 0 && (
+        {(!dataProject || dataProject.length === 0) && (
           <div className={cx("showInfoNoData")}>Không có dữ liệu</div>
         )}
       </div>
