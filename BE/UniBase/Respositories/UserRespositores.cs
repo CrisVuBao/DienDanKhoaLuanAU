@@ -15,7 +15,7 @@ namespace UniBase.Respositories
             _context = context;
         }
 
-        public async Task<List<User>> getAll()
+        public async Task<List<ApplicationUser>> getAll()
         {
             var users = await _context.Users
                 .Include(u => u.Department)
@@ -72,11 +72,9 @@ namespace UniBase.Respositories
                 {
                     fileName = ""; 
                 }
-                var UserToAdd = new User
+                var UserToAdd = new ApplicationUser
                 {
-                    Username = newUser.Username ,
-                    Password = newUser.Password ?? "",
-                    UserGroup = newUser.UserGroup ?? "",
+                    UserName = newUser.Username ,
                     PhoneNumber = newUser.PhoneNumber ?? "",
                     Address = newUser.Address ?? "",
                     Name = newUser.Name ,
@@ -114,9 +112,7 @@ namespace UniBase.Respositories
                     return false;
                 }
 
-                existingUser.Username = updatedUser.Username;
-                existingUser.Password = updatedUser.Password;
-                existingUser.UserGroup = updatedUser.UserGroup;
+                existingUser.UserName = updatedUser.Username;
                 existingUser.PhoneNumber = updatedUser.PhoneNumber;
                 existingUser.Address = updatedUser.Address;
                 existingUser.Name = updatedUser.Name;
@@ -147,7 +143,7 @@ namespace UniBase.Respositories
                 return false;
             }
         }
-        public async Task<bool> updateUserCheckComment(int userId, User updatedUser)
+        public async Task<bool> updateUserCheckComment(int userId, ApplicationUser updatedUser)
         {
             try
             {
@@ -178,7 +174,7 @@ namespace UniBase.Respositories
         {
             try
             {
-                var existingUsers = await _context.Users.Where(u => userIds.Contains(u.UserId)).ToListAsync();
+                var existingUsers = await _context.Users.Where(u => userIds.Contains(u.Id)).ToListAsync();
 
                 if (existingUsers == null || existingUsers.Count == 0)
                 {
@@ -212,7 +208,7 @@ namespace UniBase.Respositories
             }
         }
 
-        private void DeleteUserFile(User user)
+        private void DeleteUserFile(ApplicationUser user)
         {
             // Kiểm tra xem project có file liên quan không
             if (!string.IsNullOrEmpty(user.Image))
@@ -233,13 +229,13 @@ namespace UniBase.Respositories
                 }
             }
         }
-        public async Task<User> getById(int userId)
+        public async Task<ApplicationUser> getById(int userId)
         {
             try
             {
                 var user = await _context.Users
                     .Include(u => u.Department)
-                    .FirstOrDefaultAsync(u => u.UserId == userId);
+                    .FirstOrDefaultAsync(u => u.Id == userId);
 
                 if (user != null)
                 {
@@ -255,12 +251,12 @@ namespace UniBase.Respositories
                 return null;
             }
         }
-        public async Task<User> getByOnlyUserName(string userName)
+        public async Task<ApplicationUser> getByOnlyUserName(string userName)
         {
             try
             {
                 var user = await _context.Users
-                    .FirstOrDefaultAsync(u => u.Username == userName);
+                    .FirstOrDefaultAsync(u => u.UserName == userName);
                 return user;
             }
             catch (Exception ex)
@@ -270,12 +266,12 @@ namespace UniBase.Respositories
                 return null;
             }
         }
-        public async Task<User> getByIdCheckComment(int userId)
+        public async Task<ApplicationUser> getByIdCheckComment(int userId)
         {
             try
             {
                 var user = await _context.Users
-                    .FirstOrDefaultAsync(u => u.UserId == userId && u.checkComment == 1);
+                    .FirstOrDefaultAsync(u => u.Id == userId && u.checkComment == 1);
                 return user;
             }
             catch (Exception ex)
@@ -285,7 +281,7 @@ namespace UniBase.Respositories
                 return null;
             }
         }
-        public async Task<List<User>> getByName(string userName)
+        public async Task<List<ApplicationUser>> getByName(string userName)
         {
             try
             {
@@ -308,13 +304,13 @@ namespace UniBase.Respositories
                 return null;
             }
         }
-        public async Task<User> getByUsername(string username, string pass)
+        public async Task<ApplicationUser> getByUsername(string username, string pass)
         {
 
             try
             {
                 var user = await _context.Users
-                    .Where(u => u.Username == username && u.Password == pass)
+                    .Where(u => u.UserName == username)
                     .FirstOrDefaultAsync();
                 if (user != null)
                 {

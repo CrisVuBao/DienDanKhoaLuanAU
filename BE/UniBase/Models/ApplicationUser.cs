@@ -1,34 +1,26 @@
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.Json.Serialization;
-
 
 namespace UniBase.Models
 {
-    public partial class User
+    public class ApplicationUser : IdentityUser<int>
     {
         [NotMapped]
         public string? ClassName { get; set; }
         [NotMapped]
         public string? DepartmentName { get; set; }
-        public User()
+
+        public ApplicationUser()
         {
             Comments = new HashSet<Comment>();
             ProjectLists = new HashSet<ProjectList>();
         }
 
         public int? checkComment { get; set; }
-        public int UserId { get; set; }
-        public string? Username { get; set; }
-        public string? Password { get; set; }
-        public string? UserGroup { get; set; }
+        
         public int? DepartmentId { get; set; }
         public int? ClassId { get; set; }
         public string? Name { get; set; } = null!;
-        public string? PhoneNumber { get; set; }
-        public string? Email { get; set; } = null!;
         public string? Address { get; set; }
         public DateTime? DateOfBirth { get; set; }
         public string? Sex { get; set; }
@@ -40,8 +32,5 @@ namespace UniBase.Models
         public virtual ICollection<Comment>? Comments { get; set; }
         [System.Text.Json.Serialization.JsonIgnore]
         public virtual ICollection<ProjectList>? ProjectLists { get; set; }
-
-
-
     }
 }

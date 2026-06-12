@@ -1,5 +1,37 @@
 [
   {
+    "ContainingType": "UniBase.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/v1/Auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "UniBase.Controllers.LoginModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UniBase.Controllers.AuthController",
+    "Method": "Register",
+    "RelativePath": "api/v1/Auth/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "UniBase.Controllers.RegisterModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "UniBase.Controllers.CommentController",
     "Method": "getAll",
     "RelativePath": "api/v1/Comment",
@@ -1297,7 +1329,7 @@
         "IsRequired": false
       },
       {
-        "Name": "UserGroup",
+        "Name": "Role",
         "Type": "System.String",
         "IsRequired": false
       },
@@ -1378,7 +1410,7 @@
         "IsRequired": false
       },
       {
-        "Name": "UserGroup",
+        "Name": "Role",
         "Type": "System.String",
         "IsRequired": false
       },
@@ -1446,7 +1478,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "UniBase.Models.User",
+        "Type": "UniBase.Models.ApplicationUser",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1471,7 +1503,7 @@
       },
       {
         "Name": "updatedUser",
-        "Type": "UniBase.Models.User",
+        "Type": "UniBase.Models.ApplicationUser",
         "IsRequired": true
       }
     ],
@@ -1509,7 +1541,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "UniBase.Models.User",
+        "Type": "UniBase.Models.ApplicationUser",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1518,27 +1550,6 @@
         "StatusCode": 200
       }
     ]
-  },
-  {
-    "ContainingType": "UniBase.Controllers.UserController",
-    "Method": "GetByUsername",
-    "RelativePath": "api/v1/User/getByUsername/{username} {pass}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "username",
-        "Type": "System.String",
-        "IsRequired": true
-      },
-      {
-        "Name": "pass",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
   },
   {
     "ContainingType": "UniBase.Controllers.UserController",
@@ -1556,7 +1567,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "UniBase.Models.User",
+        "Type": "UniBase.Models.ApplicationUser",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1582,7 +1593,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "UniBase.Models.User",
+        "Type": "UniBase.Models.ApplicationUser",
         "MediaTypes": [
           "text/plain",
           "application/json",

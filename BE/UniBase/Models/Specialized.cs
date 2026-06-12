@@ -7,7 +7,7 @@ namespace UniBase.Models
     {
         public Specialized()
         {
-            Users = new HashSet<User>();
+            Users = new HashSet<ApplicationUser>();
         }
 
         public int SpecializedId { get; set; }
@@ -15,6 +15,6 @@ namespace UniBase.Models
         public int? DepartmentId { get; set; }
 
         public virtual Department? Department { get; set; }
-        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<ApplicationUser> Users { get; set; }
     }
 }

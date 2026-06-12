@@ -1,4 +1,4 @@
-﻿using UniBase.Models;
+using UniBase.Models;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.Design;
 using UniBase.Interfaces;
@@ -194,7 +194,7 @@ namespace UniBase.Respositories
                     .Join(
                         _context.Users,
                         evaluate => evaluate.UserId,
-                        user => user.UserId,
+                        user => user.Id,
                         (evaluate, user) => user.Name
                     )
                     .ToListAsync();

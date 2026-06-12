@@ -62,7 +62,10 @@ export const GetOnlyByName = async (name) => {
 }
 export const GetByUserName = async (userName, pass) => {
         try {
-                const res = await request.get(`/User/getByUsername/${userName} ${pass}`)
+                const res = await request.post(`/Auth/login`, {
+                        Username: userName,
+                        Password: pass
+                })
                 return res
        } catch (error) {
                 console.log(error)

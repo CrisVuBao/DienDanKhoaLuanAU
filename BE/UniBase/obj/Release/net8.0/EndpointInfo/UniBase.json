@@ -5,6 +5,68 @@
     "version": "v1"
   },
   "paths": {
+    "/api/v1/Auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UniBase.Controllers.LoginModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UniBase.Controllers.LoginModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UniBase.Controllers.LoginModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/Auth/register": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UniBase.Controllers.RegisterModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UniBase.Controllers.RegisterModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UniBase.Controllers.RegisterModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/v1/Comment": {
       "get": {
         "tags": [
@@ -2139,7 +2201,7 @@
                   "Password": {
                     "type": "string"
                   },
-                  "UserGroup": {
+                  "Role": {
                     "type": "string"
                   },
                   "DepartmentId": {
@@ -2185,7 +2247,7 @@
                 "Password": {
                   "style": "form"
                 },
-                "UserGroup": {
+                "Role": {
                   "style": "form"
                 },
                 "DepartmentId": {
@@ -2258,7 +2320,7 @@
                   "Password": {
                     "type": "string"
                   },
-                  "UserGroup": {
+                  "Role": {
                     "type": "string"
                   },
                   "DepartmentId": {
@@ -2304,7 +2366,7 @@
                 "Password": {
                   "style": "form"
                 },
-                "UserGroup": {
+                "Role": {
                   "style": "form"
                 },
                 "DepartmentId": {
@@ -2365,17 +2427,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/UniBase.Models.User"
+                  "$ref": "#/components/schemas/UniBase.Models.ApplicationUser"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UniBase.Models.User"
+                  "$ref": "#/components/schemas/UniBase.Models.ApplicationUser"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UniBase.Models.User"
+                  "$ref": "#/components/schemas/UniBase.Models.ApplicationUser"
                 }
               }
             }
@@ -2403,17 +2465,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UniBase.Models.User"
+                "$ref": "#/components/schemas/UniBase.Models.ApplicationUser"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/UniBase.Models.User"
+                "$ref": "#/components/schemas/UniBase.Models.ApplicationUser"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/UniBase.Models.User"
+                "$ref": "#/components/schemas/UniBase.Models.ApplicationUser"
               }
             }
           }
@@ -2489,17 +2551,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/UniBase.Models.User"
+                  "$ref": "#/components/schemas/UniBase.Models.ApplicationUser"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UniBase.Models.User"
+                  "$ref": "#/components/schemas/UniBase.Models.ApplicationUser"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UniBase.Models.User"
+                  "$ref": "#/components/schemas/UniBase.Models.ApplicationUser"
                 }
               }
             }
@@ -2529,17 +2591,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/UniBase.Models.User"
+                  "$ref": "#/components/schemas/UniBase.Models.ApplicationUser"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UniBase.Models.User"
+                  "$ref": "#/components/schemas/UniBase.Models.ApplicationUser"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UniBase.Models.User"
+                  "$ref": "#/components/schemas/UniBase.Models.ApplicationUser"
                 }
               }
             }
@@ -2568,50 +2630,20 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/UniBase.Models.User"
+                  "$ref": "#/components/schemas/UniBase.Models.ApplicationUser"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UniBase.Models.User"
+                  "$ref": "#/components/schemas/UniBase.Models.ApplicationUser"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UniBase.Models.User"
+                  "$ref": "#/components/schemas/UniBase.Models.ApplicationUser"
                 }
               }
             }
-          }
-        }
-      }
-    },
-    "/api/v1/User/getByUsername/{username} {pass}": {
-      "get": {
-        "tags": [
-          "User"
-        ],
-        "parameters": [
-          {
-            "name": "username",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "pass",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
           }
         }
       }
@@ -2619,6 +2651,154 @@
   },
   "components": {
     "schemas": {
+      "UniBase.Controllers.LoginModel": {
+        "type": "object",
+        "properties": {
+          "Username": {
+            "type": "string",
+            "nullable": true
+          },
+          "Password": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UniBase.Controllers.RegisterModel": {
+        "type": "object",
+        "properties": {
+          "Username": {
+            "type": "string",
+            "nullable": true
+          },
+          "Password": {
+            "type": "string",
+            "nullable": true
+          },
+          "Email": {
+            "type": "string",
+            "nullable": true
+          },
+          "Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "DepartmentId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UniBase.Models.ApplicationUser": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "UserName": {
+            "type": "string",
+            "nullable": true
+          },
+          "NormalizedUserName": {
+            "type": "string",
+            "nullable": true
+          },
+          "Email": {
+            "type": "string",
+            "nullable": true
+          },
+          "NormalizedEmail": {
+            "type": "string",
+            "nullable": true
+          },
+          "EmailConfirmed": {
+            "type": "boolean"
+          },
+          "PasswordHash": {
+            "type": "string",
+            "nullable": true
+          },
+          "SecurityStamp": {
+            "type": "string",
+            "nullable": true
+          },
+          "ConcurrencyStamp": {
+            "type": "string",
+            "nullable": true
+          },
+          "PhoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "PhoneNumberConfirmed": {
+            "type": "boolean"
+          },
+          "TwoFactorEnabled": {
+            "type": "boolean"
+          },
+          "LockoutEnd": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "LockoutEnabled": {
+            "type": "boolean"
+          },
+          "AccessFailedCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ClassName": {
+            "type": "string",
+            "nullable": true
+          },
+          "DepartmentName": {
+            "type": "string",
+            "nullable": true
+          },
+          "checkComment": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "DepartmentId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "ClassId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "Address": {
+            "type": "string",
+            "nullable": true
+          },
+          "DateOfBirth": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "Sex": {
+            "type": "string",
+            "nullable": true
+          },
+          "Image": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "UniBase.Models.Comment": {
         "type": "object",
         "properties": {
@@ -2668,10 +2848,6 @@
           "ClassName": {
             "type": "string",
             "nullable": true
-          },
-          "UserGroup": {
-            "type": "string",
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -2718,10 +2894,6 @@
             "nullable": true
           },
           "ClassName": {
-            "type": "string",
-            "nullable": true
-          },
-          "UserGroup": {
             "type": "string",
             "nullable": true
           }
@@ -2837,80 +3009,6 @@
           "DepartmentId": {
             "type": "integer",
             "format": "int32",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "UniBase.Models.User": {
-        "type": "object",
-        "properties": {
-          "ClassName": {
-            "type": "string",
-            "nullable": true
-          },
-          "DepartmentName": {
-            "type": "string",
-            "nullable": true
-          },
-          "checkComment": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "UserId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "Username": {
-            "type": "string",
-            "nullable": true
-          },
-          "Password": {
-            "type": "string",
-            "nullable": true
-          },
-          "UserGroup": {
-            "type": "string",
-            "nullable": true
-          },
-          "DepartmentId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "ClassId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "Name": {
-            "type": "string",
-            "nullable": true
-          },
-          "PhoneNumber": {
-            "type": "string",
-            "nullable": true
-          },
-          "Email": {
-            "type": "string",
-            "nullable": true
-          },
-          "Address": {
-            "type": "string",
-            "nullable": true
-          },
-          "DateOfBirth": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "Sex": {
-            "type": "string",
-            "nullable": true
-          },
-          "Image": {
-            "type": "string",
             "nullable": true
           }
         },

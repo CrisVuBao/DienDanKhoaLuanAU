@@ -94,7 +94,7 @@ namespace UniBase.Controllers
         }
         [HttpPut("checkComment/{id}")]
         [Authorize(Roles = "ADMIN")]
-        public async Task<ActionResult> updateUserCheckComment(int id,  User updatedUser)
+        public async Task<ActionResult> updateUserCheckComment(int id,  ApplicationUser updatedUser)
         {
             var success = await _resp.updateUserCheckComment(id, updatedUser);
 
@@ -128,7 +128,7 @@ namespace UniBase.Controllers
             }
         }
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUserById(int id)
+        public async Task<ActionResult<ApplicationUser>> GetUserById(int id)
         {
             var user = await _resp.getById(id);
 
@@ -140,7 +140,7 @@ namespace UniBase.Controllers
             return Ok(user); 
         }
         [HttpGet("getOnlyByName/{uesrname}")]
-        public async Task<ActionResult<User>> GetUserOnlyByName(string uesrname)
+        public async Task<ActionResult<ApplicationUser>> GetUserOnlyByName(string uesrname)
         {
             var user = await _resp.getByOnlyUserName(uesrname);
 
@@ -152,7 +152,7 @@ namespace UniBase.Controllers
             return Ok(user);
         }
         [HttpGet("getUserIdCheckComment/{userId}")]
-        public async Task<ActionResult<User>> GetUserIdCheckComment(int  userId)
+        public async Task<ActionResult<ApplicationUser>> GetUserIdCheckComment(int  userId)
         {
             var user = await _resp.getByIdCheckComment(userId);
 
@@ -164,7 +164,7 @@ namespace UniBase.Controllers
             return Ok(user);
         }
         [HttpGet("getByName/{uesrname}")]
-        public async Task<ActionResult<User>> GetUserByName(string uesrname )
+        public async Task<ActionResult<ApplicationUser>> GetUserByName(string uesrname )
         {
             var user = await _resp.getByName(uesrname);
 
@@ -176,35 +176,6 @@ namespace UniBase.Controllers
             return Ok(user);
         }
 
-        [HttpGet("getByUsername/{username} {pass}")]
-        [AllowAnonymous]
-        public async Task<ActionResult> GetByUsername(string username, string pass)
-        {
-            var user = await _resp.getByUsername(username, pass);
-
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
-            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-
-            var claims = new[]
-            {
-                new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
-                new Claim(ClaimTypes.Name, user.Username),
-                new Claim(ClaimTypes.Role, user.UserGroup ?? "USER")
-            };
-
-            var token = new JwtSecurityToken(_config["Jwt:Issuer"],
-              _config["Jwt:Audience"],
-              claims,
-              expires: DateTime.Now.AddMinutes(120),
-              signingCredentials: credentials);
-
-            return Ok(new { Token = new JwtSecurityTokenHandler().WriteToken(token), User = user });
-        }
 
     }
 

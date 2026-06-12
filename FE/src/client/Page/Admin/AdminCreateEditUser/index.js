@@ -54,12 +54,14 @@ function AdminCreateEditUser() {
           : UserImg,
       }));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [infoEdit]);
   useEffect(() => {
     if (type === "AdminEditUser") {
       fectApiEditGetUser(idUser);
     }
     fetchApiDeparment();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [type]);
   const ConvertDate = () => {
     const dateOfBirth = infoEdit?.DateOfBirth
@@ -317,8 +319,8 @@ function AdminCreateEditUser() {
                 option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
               }
             >
-              <Option value="USER">USER</Option>
-              <Option value="ADMIN">ADMIN</Option>
+              <Option value="Member">Member</Option>
+              <Option value="Admin">Admin</Option>
             </Select>
           </div>
           <div className={cx("form-input")}>

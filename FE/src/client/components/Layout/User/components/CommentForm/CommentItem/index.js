@@ -293,9 +293,7 @@ function CommentItem({  onEditComment, visibleItems, dataComment, fecthCommentAp
                     <div className={cx('comment-lable')}>
                         <span className={cx('comment-user')}>
                             {item.FullName}
-                            {item.UserGroup === 'GV' 
-                            ?  <span>(Giáo viên)</span>
-                            :  item.UserGroup === 'ADMIN' ? <span>(Admin)</span> :<span>{`(${item.ClassName})`}</span>} 
+                            {item.UserGroup === 'Admin' || item.UserGroup === 'ADMIN' ? <span>(Admin)</span> : null} 
                         </span>
                         { (`${item.UserId}` === localStorage.getItem('userId') || `ADMIN` === localStorage.getItem('UserGroup'))
                         && <div className={cx('comment-choose')}>
@@ -371,9 +369,7 @@ function CommentItem({  onEditComment, visibleItems, dataComment, fecthCommentAp
                             <div className={cx('comment-lable')}>
                                 <span className={cx('comment-user')}>
                                     {value.FullName}
-                                    {value.UserGroup === 'GV' 
-                                     ?  <span>(Giáo viên)</span>
-                                     :  value.UserGroup === 'ADMIN' ? <span>(Admin)</span> :<span>{`(${item.ClassName})`}</span>} 
+                                    {value.UserGroup === 'Admin' || value.UserGroup === 'ADMIN' ? <span>(Admin)</span> : null} 
                                 </span>
                                 { (`${item.UserId}` === localStorage.getItem('userId') || `ADMIN` === localStorage.getItem('UserGroup'))
                                 && <div className={cx('comment-choose')}>

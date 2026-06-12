@@ -148,3 +148,4 @@ D:\HCMUTE\Tieu luan\AU\website khoá luận AU\web-khoa-luan-AU\BE\UniBase\obj\D
 D:\HCMUTE\Tieu luan\AU\website khoá luận AU\web-khoa-luan-AU\BE\UniBase\obj\Debug\net8.0\UniBase.genruntimeconfig.cache
 D:\HCMUTE\Tieu luan\AU\website khoá luận AU\web-khoa-luan-AU\BE\UniBase\obj\Debug\net8.0\ref\UniBase.dll
 D:\HCMUTE\Tieu luan\AU\website khoá luận AU\web-khoa-luan-AU\BE\UniBase\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\HCMUTE\Tieu luan\AU\website khoá luận AU\web-khoa-luan-AU\BE\UniBase\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll

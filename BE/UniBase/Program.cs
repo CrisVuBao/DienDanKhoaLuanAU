@@ -10,7 +10,9 @@ using Microsoft.OpenApi.Models;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Identity;
 using System.Text;
+using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,7 +42,8 @@ builder.Services.AddAuthentication(options =>
         ValidateIssuerSigningKey = true,
         ValidIssuer = builder.Configuration["Jwt:Issuer"],
         ValidAudience = builder.Configuration["Jwt:Audience"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
+        RoleClaimType = ClaimTypes.Role // Important for Identity roles
     };
 });
 
@@ -70,6 +73,18 @@ builder.Services.AddDbContext<databaseContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 
+// --- CẤU HÌNH IDENTITY ---
+builder.Services.AddIdentity<ApplicationUser, IdentityRole<int>>(options =>
+{
+    options.Password.RequireDigit = false;
+    options.Password.RequiredLength = 6;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequireLowercase = false;
+})
+.AddEntityFrameworkStores<databaseContext>()
+.AddDefaultTokenProviders();
+
 // Cấu hình giới hạn file
 builder.Services.Configure<FormOptions>(options => options.MultipartBodyLengthLimit = 1000000000);
 builder.Services.Configure<KestrelServerOptions>(options => options.Limits.MaxRequestBodySize = 1000000000);
@@ -85,6 +100,37 @@ builder.Services.AddScoped<IProjectListRespositories, ProjectListRespositores>()
 builder.Services.AddScoped<ICommentFeedBackRespositories, CommentFeedBackRespositories>();
 
 var app = builder.Build();
+
+// --- 4. SEED DATA ---
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole<int>>>();
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+    
+    string[] roleNames = { "Admin", "Member" };
+    foreach (var roleName in roleNames)
+    {
+        if (!await roleManager.RoleExistsAsync(roleName))
+        {
+            await roleManager.CreateAsync(new IdentityRole<int>(roleName));
+        }
+    }
+
+    // Tạo tài khoản admin mặc định
+    var adminUser = await userManager.FindByNameAsync("admin");
+    if (adminUser == null)
+    {
+        adminUser = new ApplicationUser()
+        {
+            UserName = "admin",
+            Email = "admin@system.com",
+            Name = "Administrator",
+            SecurityStamp = Guid.NewGuid().ToString()
+        };
+        await userManager.CreateAsync(adminUser, "123456");
+        await userManager.AddToRoleAsync(adminUser, "Admin");
+    }
+}
 
 // --- 3. CONFIGURE PIPELINE ---
 if (app.Environment.IsDevelopment())

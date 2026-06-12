@@ -8,7 +8,7 @@ namespace UniBase.Models
         public Department()
         {
             Specializeds = new HashSet<Specialized>();
-            Users = new HashSet<User>();
+            Users = new HashSet<ApplicationUser>();
             ProjectLists = new HashSet<ProjectList>();
         }
 
@@ -17,7 +17,7 @@ namespace UniBase.Models
         [System.Text.Json.Serialization.JsonIgnore]
         public virtual ICollection<Specialized> Specializeds { get; set; }
         [System.Text.Json.Serialization.JsonIgnore]
-        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<ApplicationUser> Users { get; set; }
         [System.Text.Json.Serialization.JsonIgnore]
         public virtual ICollection<ProjectList> ProjectLists { get; set; }
     }

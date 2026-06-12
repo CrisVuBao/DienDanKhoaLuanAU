@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
@@ -25,9 +25,7 @@ namespace UniBase.Models
         public int? checkComment { get; set; }
         [NotMapped]
         public string? ClassName { get; set; } = null!;
-        [NotMapped]
-        public string? UserGroup { get; set; } = null!;
         [JsonIgnore]
-        public virtual User? User { get; set; } = null!;
+        public virtual ApplicationUser? User { get; set; } = null!;
     }
 }

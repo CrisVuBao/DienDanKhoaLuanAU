@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -13,6 +13,6 @@ namespace UniBase.Models
         public int CommentId { get; set; }
 
         [System.Text.Json.Serialization.JsonIgnore]
-        public User? User { get; set; }
+        public ApplicationUser? User { get; set; }
     }
 }

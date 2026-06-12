@@ -245,8 +245,7 @@ namespace UniBase.Respositories
                     CommentType = c.CommentType,
                     PostId = c.PostId,
                     ByCommentId = c.ByCommentId,
-                    checkComment = c.User.checkComment,
-                    UserGroup = c.User.UserGroup
+                    checkComment = c.User.checkComment
 
                 })
                 .ToListAsync();
@@ -308,8 +307,7 @@ namespace UniBase.Respositories
                     CommentType = c.CommentType,
                     PostId = c.PostId,
                     ByCommentId = c.ByCommentId,
-                    checkComment = c.User.checkComment,
-                    UserGroup = c.User.UserGroup
+                    checkComment = c.User.checkComment
                     
                 })
                 .ToListAsync();
@@ -345,7 +343,6 @@ namespace UniBase.Respositories
                     PostId = c.PostId,
                     ByCommentId = c.ByCommentId,
                     /* Evaluate = c.Evaluate,*/
-                    UserGroup = c.User.UserGroup,
                     checkComment = c.User.checkComment
                   
 

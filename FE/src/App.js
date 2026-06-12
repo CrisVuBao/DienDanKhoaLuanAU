@@ -19,7 +19,7 @@ function App() {
   const AdminRoute = ({ children }) => {
     const isAuth = !!localStorage.getItem("token");
     const role = localStorage.getItem("UserGroup");
-    return isAuth && role === "ADMIN" ? children : <Navigate to="/" />;
+    return isAuth && (role === "ADMIN" || role === "Admin") ? children : <Navigate to="/" />;
   };
 
   return (
@@ -33,15 +33,11 @@ function App() {
               key={`basic_${index}`}
               path={item.path}
               element={
-                item.type === "adminLogin" ? (
-                  <Page />
-                ) : (
                   <MyContext.Provider value={item.type}>
                     <Layout>
                       <Page />
                     </Layout>
                   </MyContext.Provider>
-                )
               }
             />
           );

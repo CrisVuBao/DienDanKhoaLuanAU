@@ -41,12 +41,17 @@ function Header() {
             localStorage.setItem('token', rs.Token);
             localStorage.setItem('statusLogin', 'login')
             localStorage.setItem('name', user.Name);
-            localStorage.setItem('userId', user.UserId);
-            localStorage.setItem('UserGroup', user.UserGroup);
+            localStorage.setItem('userId', user.Id);
+            localStorage.setItem('UserGroup', user.Roles ? user.Roles[0] : 'Member');
             localStorage.setItem('email', user.Email);
             NotificationManager.success('Đăng nhập thành công', 'Thành công', 1000);
             model.current.style.display = 'none'
-            window.location.reload()
+            
+            if (user.Roles && (user.Roles.includes('ADMIN') || user.Roles.includes('Admin'))) {
+                window.location.href = '/admin';
+            } else {
+                window.location.reload()
+            }
         } else {
             NotificationManager.error("Sai tên đăng nhập hoặc mật khẩu", 'Lỗi', 1000);
         }

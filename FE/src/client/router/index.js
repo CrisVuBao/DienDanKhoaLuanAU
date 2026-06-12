@@ -8,7 +8,7 @@ import DefaultLayoutAdmin from "../components/Layout/Admin/DefaultLayoutAdmin";
 import HomeAdmin from "../Page/Admin/HomeAdmin";
 import ProjectsManager from "../Page/User/ProjectsManager";
 import ProjectCreateEdit from "../Page/User/ProjectCreateEdit";
-import AdminLogin from "../AdminLogin";
+
 import AdminCreateEditUser from "../Page/Admin/AdminCreateEditUser";
 import AdminForum from "../Page/Admin/AdminForum";
 import AdminCreateEditForum from "../Page/Admin/AdminCreateEditForum";
@@ -49,7 +49,7 @@ const basicRouter = [
     layout: DefaultLayout,
     type: "projectPost",
   },
-  { path: "/adminLogin", component: AdminLogin, type: "adminLogin" },
+
 ];
 
 const loggedInRoutes = [

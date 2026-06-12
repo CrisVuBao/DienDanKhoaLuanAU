@@ -41,12 +41,12 @@ function NavMenu() {
                         >
                             TRANG CHỦ
                         </Link>
-                        {localStorage.getItem('statusLogin') === 'login' && (dataUser && dataUser.UserGroup === 'GV') &&
+                        {localStorage.getItem('statusLogin') === 'login' &&
                             <Link to={'/projectsManager'}
                                 onClick={toggleMenu}
                                 className={cx('nav-item', { 'selected': ('projectsManager' === type || type === 'projectEditUser' || type === 'projectCreateUser') })}
                             >
-                                QUẢN LÍ TÀI LIỆU
+                                QUẢN LÝ TÀI LIỆU
                             </Link>
                         }
                         <Link to={'/projects'}

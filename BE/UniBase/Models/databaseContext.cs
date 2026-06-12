@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace UniBase.Models
 {
-    public partial class databaseContext : DbContext
+    public partial class databaseContext : IdentityDbContext<ApplicationUser, IdentityRole<int>, int>
     {
         public databaseContext()
         {
@@ -22,8 +24,6 @@ namespace UniBase.Models
         public virtual DbSet<Forum> Forums { get; set; } = null!;
         public virtual DbSet<ProjectList> ProjectLists { get; set; } = null!;
         public virtual DbSet<Specialized> Specializeds { get; set; } = null!;
-        public virtual DbSet<User> Users { get; set; } = null!;
-        public virtual DbSet<UserGroup> UserGroups { get; set; } = null!;
 
         public virtual DbSet<CommentFeedback> CommentFeedbacks { get; set; } = null!;
 
@@ -38,6 +38,8 @@ namespace UniBase.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+            
             modelBuilder.Entity<Comment>(entity =>
             {
                 entity.ToTable("Comment");
@@ -100,22 +102,6 @@ namespace UniBase.Models
                     .HasConstraintName("FK_Specialized_Department");
             });
 
-            modelBuilder.Entity<User>(entity =>
-            {
-                entity.ToTable("User");
-
-                entity.Property(e => e.DateOfBirth).HasColumnType("datetime");
-
-                entity.Property(e => e.PhoneNumber).HasMaxLength(11);
-
-                entity.Property(e => e.UserGroup).HasMaxLength(100);
-
-                entity.HasOne(d => d.Department)
-                    .WithMany(p => p.Users)
-                    .HasForeignKey(d => d.DepartmentId)
-                    .HasConstraintName("FK_User_Department");
-            });
-
             modelBuilder.Entity<CommentFeedback>(entity =>
             {
                 entity.HasKey(e => e.CommentId)
@@ -132,13 +118,6 @@ namespace UniBase.Models
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_CommentFeedback_User");*/
-            });
-
-            modelBuilder.Entity<UserGroup>(entity =>
-            {
-                entity.ToTable("UserGroup");
-
-                entity.Property(e => e.UserGroupId).HasMaxLength(100);
             });
 
             OnModelCreatingPartial(modelBuilder);

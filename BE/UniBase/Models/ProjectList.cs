@@ -26,6 +26,6 @@ namespace UniBase.Models
         [System.Text.Json.Serialization.JsonIgnore]
         public virtual Department? Department { get; set; }
         [System.Text.Json.Serialization.JsonIgnore]
-        public virtual User? User { get; set; } = null!;
+        public virtual ApplicationUser? User { get; set; } = null!;
     }
 }

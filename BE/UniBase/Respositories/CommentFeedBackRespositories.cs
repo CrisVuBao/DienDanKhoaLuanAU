@@ -222,8 +222,7 @@ namespace UniBase.Respositories
                     CommentDate = c.CommentDate,
                     Discriptions = c.Discriptions,
                     CommentType = c.CommentType,
-                    PostId = c.PostId,
-                    UserGroup = c.User.UserGroup
+                    PostId = c.PostId
 
                 })
                 .ToListAsync();
