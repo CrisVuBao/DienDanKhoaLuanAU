@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Xml.Linq;
 using UniBase.Interfaces;
+using UniBase.Data;
 
 namespace UniBase.Respositories
 {
@@ -38,16 +39,14 @@ namespace UniBase.Respositories
         {
             var ProjectList = await _context.ProjectLists
                   .Include(u => u.User)
+                  .Include(u => u.Department)
                   .OrderByDescending(p => p.CreatedDate)
                   .ToListAsync();
             foreach (var project in ProjectList)
             {
-
                 project.UserName = project.User?.Name;
-
-
+                project.DepartmentName = project.Department?.Name;
             }
-
 
             return ProjectList;
         }
@@ -262,20 +261,26 @@ namespace UniBase.Respositories
         {
             try
             {
-                var Project = await _context.ProjectLists.
-                    Where(u => u.UserId == UsertId)
-                     .OrderByDescending(p => p.CreatedDate)
+                var Project = await _context.ProjectLists
+                    .Include(u => u.User)
+                    .Include(u => u.Department)
+                    .Where(u => u.UserId == UsertId)
+                    .OrderByDescending(p => p.CreatedDate)
                     .ToListAsync();
+
+                foreach (var project in Project)
+                {
+                    project.UserName = project.User?.Name;
+                    project.DepartmentName = project.Department?.Name;
+                }
 
                 return Project;
             }
             catch (Exception ex)
             {
-                // Xử lý lỗi nếu cần
                 Console.Error.WriteLine($"Lỗi khi lấy người dùng theo ID: {ex.Message}");
                 return null;
             }
-
         }
         public async Task<List<ProjectList>> getThreeDataBig()
         {

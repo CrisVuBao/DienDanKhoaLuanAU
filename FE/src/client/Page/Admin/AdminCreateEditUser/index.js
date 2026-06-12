@@ -43,7 +43,7 @@ function AdminCreateEditUser() {
       birthRef.current.value = ConvertDate();
       phoneRef.current.value = infoEdit?.PhoneNumber;
       setSex(infoEdit?.Sex);
-      setChucvu(infoEdit?.UserGroup);
+      setChucvu(infoEdit?.Role);
       setDeparmentSelect(infoEdit?.DepartmentId);
       usenameRef.current.value = infoEdit?.Username;
       passwordRef.current.value = infoEdit?.Password;
@@ -144,7 +144,7 @@ function AdminCreateEditUser() {
     formData.append("Address", addressRef.current?.value);
     formData.append("DateOfBirth", birthRef.current?.value);
     formData.append("DepartmentId", deparmentSelect);
-    formData.append("UserGroup", chucvu);
+    formData.append("Role", chucvu);
     formData.append("Sex", sex);
     formData.append("ImageFile", imgUrl.imgFile);
 

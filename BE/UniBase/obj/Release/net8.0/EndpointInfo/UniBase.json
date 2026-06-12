@@ -2423,24 +2423,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/UniBase.Models.ApplicationUser"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UniBase.Models.ApplicationUser"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UniBase.Models.ApplicationUser"
-                }
-              }
-            }
+            "description": "OK"
           }
         }
       }
@@ -2587,24 +2570,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/UniBase.Models.ApplicationUser"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UniBase.Models.ApplicationUser"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UniBase.Models.ApplicationUser"
-                }
-              }
-            }
+            "description": "OK"
           }
         }
       }
@@ -2626,24 +2592,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/UniBase.Models.ApplicationUser"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UniBase.Models.ApplicationUser"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UniBase.Models.ApplicationUser"
-                }
-              }
-            }
+            "description": "OK"
           }
         }
       }
@@ -2949,6 +2898,10 @@
         "type": "object",
         "properties": {
           "UserName": {
+            "type": "string",
+            "nullable": true
+          },
+          "DepartmentName": {
             "type": "string",
             "nullable": true
           },

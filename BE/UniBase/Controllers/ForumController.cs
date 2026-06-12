@@ -10,7 +10,7 @@ namespace UniBase.Controllers
     [EnableCors("AllowAll")]
     [Route("api/v1/[controller]")]
     [ApiController]
-    [Authorize(Roles = "ADMIN")]
+    [Authorize(Roles = "Admin")]
     public class ForumController : ControllerBase
     {
         private readonly IForumRespositories _resp;

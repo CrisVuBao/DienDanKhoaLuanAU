@@ -8,6 +8,8 @@ namespace UniBase.Models
     {
         [NotMapped]
         public string? UserName { get; set; } = null!;
+        [NotMapped]
+        public string? DepartmentName { get; set; }
 
         public int ProjectListId { get; set; }
         public string? Name { get; set; }

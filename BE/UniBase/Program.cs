@@ -13,6 +13,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Identity;
 using System.Text;
 using System.Security.Claims;
+using UniBase.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

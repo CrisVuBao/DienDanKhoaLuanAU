@@ -295,13 +295,13 @@ function CommentItem({  onEditComment, visibleItems, dataComment, fecthCommentAp
                             {item.FullName}
                             {item.UserGroup === 'Admin' || item.UserGroup === 'ADMIN' ? <span>(Admin)</span> : null} 
                         </span>
-                        { (`${item.UserId}` === localStorage.getItem('userId') || `ADMIN` === localStorage.getItem('UserGroup'))
+                        { (`${item.UserId}` === localStorage.getItem('userId') || ['Admin','ADMIN'].includes(localStorage.getItem('UserGroup')))
                         && <div className={cx('comment-choose')}>
-                                {(item.checkComment !== 1 || `ADMIN` === localStorage.getItem('UserGroup') ) &&  <div className={cx('choose-icon')}><MenuHozi/></div>}
+                                {(item.checkComment !== 1 || ['Admin','ADMIN'].includes(localStorage.getItem('UserGroup')) ) &&  <div className={cx('choose-icon')}><MenuHozi/></div>}
                                 <div  className={cx('comment-edit-options')}>
                                     <div onClick={() => onEditComment(item)} className={cx('comment-edit')}>Chỉnh sửa</div>
                                     <div onClick={() => onDelComment(item.CommentId, 'comment')} className={cx('comment-edit')}>Xóa</div>
-                                    {`ADMIN` === localStorage.getItem('UserGroup') 
+                                    {['Admin','ADMIN'].includes(localStorage.getItem('UserGroup')) 
                                         && <div onClick={() => handleCheckCommentUser(item.UserId, item.checkComment)} className={cx('comment-edit')}>
                                                 {item.checkComment === 1 ? <span>Bỏ cấm</span> : <span>Cấm chat</span>}
                                             </div>}
@@ -335,7 +335,7 @@ function CommentItem({  onEditComment, visibleItems, dataComment, fecthCommentAp
                             </Tippy>
                         ))}
                     </div>
-                    {(item.checkComment !== 1 || `ADMIN` === localStorage.getItem('UserGroup')) && <div className={cx('re-comment')} onClick={() => handleShowReComment(item.CommentId)}><span>Phản hồi</span></div>}
+                    {(item.checkComment !== 1 || ['Admin','ADMIN'].includes(localStorage.getItem('UserGroup'))) && <div className={cx('re-comment')} onClick={() => handleShowReComment(item.CommentId)}><span>Phản hồi</span></div>}
                 </div>
                 
                 { handleCheckShowSeeAll(item.CommentId) && !showcommnentFeedbackArr.includes(item.CommentId) &&
@@ -371,13 +371,13 @@ function CommentItem({  onEditComment, visibleItems, dataComment, fecthCommentAp
                                     {value.FullName}
                                     {value.UserGroup === 'Admin' || value.UserGroup === 'ADMIN' ? <span>(Admin)</span> : null} 
                                 </span>
-                                { (`${item.UserId}` === localStorage.getItem('userId') || `ADMIN` === localStorage.getItem('UserGroup'))
+                                { (`${item.UserId}` === localStorage.getItem('userId') || ['Admin','ADMIN'].includes(localStorage.getItem('UserGroup')))
                                 && <div className={cx('comment-choose')}>
-                                        {(item.checkComment !== 1 || `ADMIN` === localStorage.getItem('UserGroup') ) &&  <div className={cx('choose-icon')}><MenuHozi/></div>}
+                                        {(item.checkComment !== 1 || ['Admin','ADMIN'].includes(localStorage.getItem('UserGroup')) ) &&  <div className={cx('choose-icon')}><MenuHozi/></div>}
                                         <div  className={cx('comment-edit-options')}>
                                             <div onClick={() => onEditComment(value)} className={cx('comment-edit')}>Chỉnh sửa</div>
                                             <div onClick={() => onDelComment(value.CommentId,'feedback')} className={cx('comment-edit')}>Xóa</div>
-                                            {`ADMIN` === localStorage.getItem('UserGroup') 
+                                            {['Admin','ADMIN'].includes(localStorage.getItem('UserGroup')) 
                                                 && <div onClick={() => handleCheckCommentUser(value.UserId, value.checkComment)} className={cx('comment-edit')}>
                                                         {value.checkComment === 1 ? <span>Bỏ cấm</span> : <span>Cấm chat</span>}
                                                     </div>

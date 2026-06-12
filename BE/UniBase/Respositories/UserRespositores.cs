@@ -3,6 +3,7 @@ using UniBase.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using UniBase.Interfaces;
+using UniBase.Data;
 
 namespace UniBase.Respositories
 {

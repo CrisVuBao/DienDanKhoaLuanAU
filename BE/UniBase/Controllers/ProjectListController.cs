@@ -43,7 +43,7 @@ namespace UniBase.Controllers
             }
         }
         [HttpGet("getAllAdmin")]
-        [Authorize(Roles = "ADMIN")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> getAllAdmin()
         {
             try
@@ -102,7 +102,7 @@ namespace UniBase.Controllers
             }
         }
         [HttpPut("checkAdmin")]
-        [Authorize(Roles = "ADMIN")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<ProjectList>> UpdateProjectsCheckAdmin([FromBody] List<ProjectList> model)
         {
             try

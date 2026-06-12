@@ -131,9 +131,8 @@ function HomeAdmin() {
         />
       ),
     },
-    { title: "Tài Khoản", dataIndex: "Username", key: "Username",width:"8%", },
-    { title: "Mật Khẩu", dataIndex: "Password", key: "Password",width:"8%", },
-    { title: "Chức vụ", dataIndex: "UserGroup", key: "UserGroup",width:"6%", },
+    { title: "Tài Khoản", dataIndex: "Username", key: "Username",width:"10%", },
+    { title: "Chức vụ", dataIndex: "Role", key: "Role",width:"8%", },
     {
       title: "Họ Tên",
       dataIndex: "Name",
@@ -141,7 +140,6 @@ function HomeAdmin() {
       width:"18%",
       ...getColumnSearchProps("Name"),
     },
-    { title: "Lớp", dataIndex: "ClassName", key: "ClassName",width:"8%" },
     { title: "Khoa", dataIndex: "DepartmentName", key: "DepartmentName", width:"18%" },
     {
       title: "Chuyên ngành",
