@@ -1,13 +1,9 @@
 import classNames from "classnames/bind";
 import styles from './Header.module.scss';
-import NavMenu from "./NavMenu";
-import { UserIcon } from "../../../../../Icon";
 import { useRef } from "react";
 import * as ServiceUser from './../../../../../apiServieces/UserApi'
 import { NotificationContainer, NotificationManager } from 'react-notifications';
-import { SignOutIcon } from "../../../../../Icon";
 import { Link } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const cx = classNames.bind(styles)
 function Header() {
@@ -75,33 +71,48 @@ function Header() {
                     </div>
                 </div>
             </div>
-            <header className={cx('header')}>
+            <nav className="bg-white/80 dark:bg-surface-container/80 backdrop-blur-md docked full-width top-0 sticky z-50 border-b border-outline-variant/30 shadow-sm">
                 <NotificationContainer />
-                <div className={cx('rowHeader', 'row container-fluid')}>
-                    <Link to={'/'} className={cx('header-content', 'col-12 col-lg-9 row')}>
-                        <div className={cx('div-img', ' col-12 col-md-2 ')} style={{ width: '150px' }} >
-                            <div className={cx('header-logo')}></div>
+                <div className="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+                    <div className="flex items-center gap-8">
+                        <Link className="text-headline-md font-display-lg font-bold text-primary dark:text-inverse-primary tracking-tight" to="/">
+                            UNIBASE
+                        </Link>
+                        <div className="hidden md:flex gap-6">
+                            <Link className="text-primary dark:text-inverse-primary font-bold hover:border-b-2 hover:border-primary pb-1 font-label-md text-label-md" to="/">Trang chủ</Link>
+                            {localStorage.getItem('statusLogin') === 'login' &&
+                                <Link className="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors font-label-md text-label-md" to="/projectsManager">Quản lý tài liệu</Link>
+                            }
+                            <Link className="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors font-label-md text-label-md" to="/projects">Danh sách tài liệu</Link>
+                            <Link className="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors font-label-md text-label-md" to="/forum">Diễn đàn</Link>
                         </div>
-                        <div className={cx('header-text', 'col-12 col-md-9')}>
-                            <span className={cx('header-textSm')}>UNIBASE</span>
-                            <span className={cx('header-textMain')}>DIỄN ĐÀN CHIA SẺ TÀI LIỆU ĐẠI HỌC</span>
+                    </div>
+                    <div className="flex items-center gap-4">
+                        <div className="hidden md:flex relative group">
+                            <input className="bg-surface-container-low border border-outline-variant rounded-xl py-2 pl-4 pr-10 focus:outline-none focus:border-primary transition-colors w-64 text-body-md font-body-md" placeholder="Tìm kiếm tài liệu..." type="text" />
+                            <span className="material-symbols-outlined absolute right-3 top-2.5 text-outline group-focus-within:text-primary transition-colors">search</span>
                         </div>
-                    </Link>
-                    <div className={cx('header-login', 'col-12 col-lg-3 mt-4')}  >
-                        {localStorage.getItem('statusLogin') === 'login' ?
-                            <div className={cx('log-out')}>
-                                <Link to={'/userInfo'} className={cx('user')}><UserIcon width="1.5rem" />{localStorage.getItem('name')}</Link>
-                                <div className={cx('logOut-div')} onClick={handleLogOut}>
-                                    <SignOutIcon width="1.8rem" classsName={cx('log-icon')} />
-                                </div>
+                        <button aria-label="Notifications" className="p-2 hover:bg-primary-container/10 dark:hover:bg-primary-container/20 rounded-lg text-primary dark:text-inverse-primary transition-colors">
+                            <span className="material-symbols-outlined">notifications</span>
+                        </button>
+
+                        {localStorage.getItem('statusLogin') === 'login' ? (
+                            <div className="flex items-center gap-2">
+                                <Link to={'/userInfo'} className="text-primary font-bold hover:underline">
+                                    {localStorage.getItem('name')}
+                                </Link>
+                                <button onClick={handleLogOut} aria-label="Logout" className="p-2 hover:bg-error-container hover:text-error rounded-lg text-primary transition-colors">
+                                    <span className="material-symbols-outlined">logout</span>
+                                </button>
                             </div>
-                            : <div onClick={handleModel} >
-                                <UserIcon classsName={cx('header-login--button')} />
-                            </div>}
+                        ) : (
+                            <button onClick={handleModel} aria-label="Account" className="p-2 hover:bg-primary-container/10 dark:hover:bg-primary-container/20 rounded-lg text-primary dark:text-inverse-primary transition-colors">
+                                <span className="material-symbols-outlined">account_circle</span>
+                            </button>
+                        )}
                     </div>
                 </div>
-                <NavMenu />
-            </header>
+            </nav>
         </>
     );
 }
