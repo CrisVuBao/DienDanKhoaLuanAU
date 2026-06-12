@@ -118,7 +118,7 @@ function Projects() {
       await fecthProjectGetByName(inputSearchRef.current.value);
     }
   };
-  const handleChangeInputSearch = (e) => {};
+  const handleChangeInputSearch = (e) => { };
   useEffect(() => {
     if (type === "projectsByDeparmentId") {
       fecthProjectByDeparmentId(urlDepartmentId);
@@ -184,7 +184,7 @@ function Projects() {
         </div>
         {dataProjects.length === 0 && (
           <div className={cx("showInfoNoData")}>
-            Không có dữ liệu khóa luận {departmentName}!
+            Không có dữ liệu về tài liệu {departmentName}!
           </div>
         )}
       </div>

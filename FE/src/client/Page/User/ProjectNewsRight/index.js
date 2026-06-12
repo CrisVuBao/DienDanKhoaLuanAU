@@ -2,7 +2,7 @@
 import styles from './ProjectNews.module.scss'
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
-import {  UserIcon, EyeIcon, DowIcon } from "../../../Icon";
+import { UserIcon, EyeIcon, DowIcon } from "../../../Icon";
 import * as ServiceProjectApi from './../../../apiServieces/ProjectListApi'
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -30,65 +30,65 @@ function ProjectNews({ checkActiveNewsRight }) {
         fecthProjectGetThreeDataBig()
         fecthDeparmentGetAll()
         fecthProjectGetThreeDataBigDownload()
-    },[])
-   
+    }, [])
+
 
     const handleLinkClick = (index) => {
-      setSelectedLink(index);
+        setSelectedLink(index);
     };
-    return ( 
+    return (
         <div className={cx('content-right')}>
-        <div className={cx('news-department')}>
-            <div className={cx('news-lable')}>
-                Khóa luận các khoa
+            <div className={cx('news-department')}>
+                <div className={cx('news-lable')}>
+                    Tài liệu các khoa
+                </div>
+                <ul className={cx('news-nav', 'nav-department', 'p-0')}>
+                    {dataDeparment && dataDeparment.length > 0 &&
+                        dataDeparment.map((item, index) => (
+                            <Link key={index} to={(`/projects/${item.DepartmentId}/${item.Name}`)}
+                                className={cx('nav-item', { selected: checkActiveNewsRight && selectedLink === index })}
+                                onClick={() => handleLinkClick(index)}
+                            >{item.Name}
+                            </Link>
+                        ))
+                    }
+
+                </ul>
             </div>
-            <ul className={cx('news-nav','nav-department','p-0')}>
-                {dataDeparment && dataDeparment.length > 0 &&
-                dataDeparment.map((item, index) => (
-                    <Link key={index} to={(`/projects/${item.DepartmentId}/${item.Name}`)} 
-                            className={cx('nav-item', { selected: checkActiveNewsRight && selectedLink === index })}
-                            onClick={() => handleLinkClick(index)}
-                    >{item.Name}
-                    </Link>
-                ))
-                }
-                
-            </ul>
+            <div className={cx('news-department')}>
+                <div className={cx('news-lable')}>Xem nhiều nhất</div>
+                <ul className={cx('news-nav', 'p-0')}>
+                    {watchDataBig && watchDataBig.length > 0 && watchDataBig.map((item, index) => (
+                        <Link to={`/projectPost/${item.ProjectListId}/${item.UserName}`} key={index} className={cx('nav-item')}>
+                            <div className={cx('commnet-title')}>{item.Name}</div>
+                            <div className={cx("comment-dateUser")}>
+                                <div className={cx('comment-user')} ><UserIcon classsName={cx('comment-icon')} /><span>{item.UserName}</span></div>
+                                <div className={cx('comment-user')} ><EyeIcon classsName={cx('comment-icon')} /><span>{item.Watched}</span></div>
+                                <div className={cx('comment-user')} ><DowIcon classsName={cx('comment-icon')} /><span>{item.Download}</span></div>
+                            </div>
+                        </Link>
+                    ))
+                    }
+                </ul>
+            </div>
+            <div className={cx('news-department')}>
+                <div className={cx('news-lable')}>Tải nhiều nhất</div>
+                <ul className={cx('news-nav', 'p-0')}>
+                    {downloadDataBig && downloadDataBig.length > 0 && downloadDataBig.map((item, index) => (
+                        <Link to={`/projectPost/${item.ProjectListId}/${item.UserName}`} key={index} className={cx('nav-item')}>
+                            <div className={cx('commnet-title')}>{item.Name}</div>
+                            <div className={cx("comment-dateUser")}>
+                                <div className={cx('comment-user')} ><UserIcon classsName={cx('comment-icon')} /><span>{item.UserName}</span></div>
+                                <div className={cx('comment-user')} ><EyeIcon classsName={cx('comment-icon')} /><span>{item.Watched}</span></div>
+                                <div className={cx('comment-user')} ><DowIcon classsName={cx('comment-icon')} /><span>{item.Download}</span></div>
+                            </div>
+                        </Link>
+                    ))
+                    }
+                </ul>
+            </div>
         </div>
-        <div  className={cx('news-department')}>
-            <div className={cx('news-lable')}>Xem nhiều nhất</div>
-            <ul className={cx('news-nav','p-0')}>
-                {watchDataBig && watchDataBig.length > 0 &&  watchDataBig.map((item, index) => (
-                    <Link to={`/projectPost/${item.ProjectListId}/${item.UserName}`} key={index} className={cx('nav-item')}>
-                        <div className={cx('commnet-title')}>{item.Name}</div>
-                        <div className={cx("comment-dateUser")}>
-                            <div className={cx('comment-user')} ><UserIcon classsName={cx('comment-icon')}/><span>{item.UserName}</span></div>
-                            <div className={cx('comment-user')} ><EyeIcon classsName={cx('comment-icon')}/><span>{item.Watched}</span></div>
-                            <div className={cx('comment-user')} ><DowIcon classsName={cx('comment-icon')}/><span>{item.Download}</span></div>
-                        </div>
-                    </Link>
-                ))
-                }
-            </ul>
-        </div>
-        <div  className={cx('news-department')}>
-            <div className={cx('news-lable')}>Tải nhiều nhất</div>
-            <ul className={cx('news-nav','p-0')}>
-                {downloadDataBig && downloadDataBig.length > 0 &&  downloadDataBig.map((item, index) => (
-                    <Link to={`/projectPost/${item.ProjectListId}/${item.UserName}`} key={index} className={cx('nav-item')}>
-                        <div className={cx('commnet-title')}>{item.Name}</div>
-                        <div className={cx("comment-dateUser")}>
-                            <div className={cx('comment-user')} ><UserIcon classsName={cx('comment-icon')}/><span>{item.UserName}</span></div>
-                            <div className={cx('comment-user')} ><EyeIcon classsName={cx('comment-icon')}/><span>{item.Watched}</span></div>
-                            <div className={cx('comment-user')} ><DowIcon classsName={cx('comment-icon')}/><span>{item.Download}</span></div>
-                        </div>
-                    </Link>
-                ))
-                }
-            </ul>
-        </div>
-    </div>
-     );
+    );
 }
 
 export default ProjectNews;

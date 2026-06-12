@@ -5,44 +5,49 @@ import { BarIcon, HomeIcon, RightIcon } from "../../../../../Icon";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import logoImg from '../../../../../Image/logo.png'
-const cx  = classNames.bind(styles)
+const cx = classNames.bind(styles)
 function SidebarAdmin() {
-    const [backgroundItem, setBackgroundItem ] = useState('')
+    const [backgroundItem, setBackgroundItem] = useState('')
     const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
     const handleChangLink = (item) => {
         setBackgroundItem(item)
     }
-    return ( 
+    return (
         <div className={cx('wrapper')}>
             <Sidebar collapsed={sidebarCollapsed} >
                 <span onClick={() => setSidebarCollapsed(!sidebarCollapsed)} className={cx('icon')}>
                     <BarIcon />
                 </span>
                 <Link to={'/admin'} onClick={() => handleChangLink('')} className={cx('title')}>
-                    <img className={cx('imgLogo')} src={logoImg} alt="img"/>
+                    <img className={cx('imgLogo')} src={logoImg} alt="img" />
                 </Link>
                 <Menu className={cx('menu')}
                     menuItemStyles={{
                         button: ({ level }) => {
-                        if (level === 0) {
-                            return {
-                            "&:hover": {
-                                backgroundColor: "#c15b3e !important",
-                                color: "white !important",
-                                fontWeight: "bold !important" }, }; }},}}
+                            if (level === 0) {
+                                return {
+                                    "&:hover": {
+                                        backgroundColor: "#c15b3e !important",
+                                        color: "white !important",
+                                        fontWeight: "bold !important"
+                                    },
+                                };
+                            }
+                        },
+                    }}
                 >
-                    <SubMenu className={cx('submenu')} icon={<HomeIcon/>} label="Quản lí" >
-                         
-                        <MenuItem onClick={() =>  handleChangLink('item1')}  component={<Link to="/admin" />}  icon={<RightIcon/>} className={cx('menuItem', {'selected': backgroundItem === 'item1'})}>
+                    <SubMenu className={cx('submenu')} icon={<HomeIcon />} label="Quản lí" >
+
+                        <MenuItem onClick={() => handleChangLink('item1')} component={<Link to="/admin" />} icon={<RightIcon />} className={cx('menuItem', { 'selected': backgroundItem === 'item1' })}>
                             Người dùng
                         </MenuItem>
-                    
-                    
-                        <MenuItem onClick={() => handleChangLink('item3')}  component={<Link to="/adminForum" />}  icon={<RightIcon/>} className={cx('menuItem', {'selected': backgroundItem === 'item3'})}>
+
+
+                        <MenuItem onClick={() => handleChangLink('item3')} component={<Link to="/adminForum" />} icon={<RightIcon />} className={cx('menuItem', { 'selected': backgroundItem === 'item3' })}>
                             Diễn đàn
                         </MenuItem>
-                         <MenuItem onClick={() => handleChangLink('item2')}  component={<Link to="/adminDuyet" />}  icon={<RightIcon/>} className={cx('menuItem', {'selected': backgroundItem === 'item2'})}>
-                            Duyệt khóa luận
+                        <MenuItem onClick={() => handleChangLink('item2')} component={<Link to="/adminDuyet" />} icon={<RightIcon />} className={cx('menuItem', { 'selected': backgroundItem === 'item2' })}>
+                            Duyệt tài liệu
                         </MenuItem>
                         {/* <MenuItem onClick={() => handleChangLink('item4')}  component={<Link to="/admin" />}  icon={<RightIcon/>} className={cx('menuItem', {'selected': backgroundItem === 'item4'})}>
                             Khoa
@@ -60,7 +65,7 @@ function SidebarAdmin() {
                 </Menu>
             </Sidebar>
         </div>
-     );
+    );
 }
 
 export default SidebarAdmin;

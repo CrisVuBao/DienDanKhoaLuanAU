@@ -28,74 +28,77 @@ function Header() {
         localStorage.removeItem('statusLogin')
         localStorage.removeItem('UserGroup')
         localStorage.removeItem('email')
+        localStorage.removeItem('token')
         userNameRef.current.value = ''
         passRef.current.value = ''
         window.location.reload()
     }
     const handleLogin = async () => {
-       
+
         const rs = await ServiceUser.GetByUserName(userNameRef.current.value, passRef.current.value)
-        if(rs) {
+        if (rs && rs.Token) {
+            const user = rs.User;
+            localStorage.setItem('token', rs.Token);
             localStorage.setItem('statusLogin', 'login')
-            localStorage.setItem('name', rs.Name);
-            localStorage.setItem('userId', rs.UserId);
-            localStorage.setItem('UserGroup', rs.UserGroup);
-            localStorage.setItem('email', rs.Email);
+            localStorage.setItem('name', user.Name);
+            localStorage.setItem('userId', user.UserId);
+            localStorage.setItem('UserGroup', user.UserGroup);
+            localStorage.setItem('email', user.Email);
             NotificationManager.success('Đăng nhập thành công', 'Thành công', 1000);
             model.current.style.display = 'none'
             window.location.reload()
-        }else {
+        } else {
             NotificationManager.error("Sai tên đăng nhập hoặc mật khẩu", 'Lỗi', 1000);
         }
     }
     return (
         <>
-        <div className={cx('modal')} ref={model} >
-            <div onClick={handleModelClose} className={cx('overflow')} id="overflow"></div>
-            <div   className={cx('modal-login')}>
-                <div className={cx('login-text')}>Đăng nhập</div>
-                <div className={cx('login-input')}>
-                    <label >Tên đăng nhập</label>
-                    <input ref={userNameRef} required type="text" />
-                </div>
-                <div className={cx('login-input')}>
-                    <label >Mật khẩu</label>
-                    <input  ref={passRef}  required type="password" />
-                </div>
-                <div className={cx('login-button')}>
-                    <button onClick={handleLogin}>Đăng nhập</button>
+            <div className={cx('modal')} ref={model} >
+                <div onClick={handleModelClose} className={cx('overflow')} id="overflow"></div>
+                <div className={cx('modal-login')}>
+                    <div className={cx('login-text')}>Đăng nhập</div>
+                    <div className={cx('login-input')}>
+                        <label >Tên đăng nhập</label>
+                        <input ref={userNameRef} required type="text" />
+                    </div>
+                    <div className={cx('login-input')}>
+                        <label >Mật khẩu</label>
+                        <input ref={passRef} required type="password" />
+                    </div>
+                    <div className={cx('login-button')}>
+                        <button onClick={handleLogin}>Đăng nhập</button>
+                    </div>
                 </div>
             </div>
-        </div> 
-        <header className={cx('header')}>
-            <NotificationContainer/>
-            <div className={cx('rowHeader','row container-fluid')}>
-                <Link to={'/'} className={cx('header-content','col-12 col-lg-9 row')}>
-                    <div className={cx('div-img',' col-12 col-md-2 ')} style={{width:'150px'}} >
-                        <div className={cx('header-logo')}></div>
-                    </div>
-                    <div className={cx('header-text','col-12 col-md-9')}>
-                        <span className={cx('header-textMain')}>CỔNG TRAO ĐỔI KHÓA LUẬN TỐT NGHIỆP</span>
-                        <span className={cx('header-textSm')}>Trường đại học Sao Đỏ</span>
-                    </div>
-                </Link>
-                <div className={cx('header-login','col-12 col-lg-3 mt-4')}  >
-                    {localStorage.getItem('statusLogin') === 'login' ? 
-                    <div className={cx('log-out')}>
-                        <Link to={'/userInfo'}  className={cx('user')}><UserIcon width="1.5rem"/>{localStorage.getItem('name')}</Link> 
-                        <div className={cx('logOut-div')} onClick= {handleLogOut}>
-                            <SignOutIcon  width="1.8rem"  classsName={cx('log-icon')}/>
+            <header className={cx('header')}>
+                <NotificationContainer />
+                <div className={cx('rowHeader', 'row container-fluid')}>
+                    <Link to={'/'} className={cx('header-content', 'col-12 col-lg-9 row')}>
+                        <div className={cx('div-img', ' col-12 col-md-2 ')} style={{ width: '150px' }} >
+                            <div className={cx('header-logo')}></div>
                         </div>
+                        <div className={cx('header-text', 'col-12 col-md-9')}>
+                            <span className={cx('header-textSm')}>UNIBASE</span>
+                            <span className={cx('header-textMain')}>DIỄN ĐÀN CHIA SẺ TÀI LIỆU ĐẠI HỌC</span>
+                        </div>
+                    </Link>
+                    <div className={cx('header-login', 'col-12 col-lg-3 mt-4')}  >
+                        {localStorage.getItem('statusLogin') === 'login' ?
+                            <div className={cx('log-out')}>
+                                <Link to={'/userInfo'} className={cx('user')}><UserIcon width="1.5rem" />{localStorage.getItem('name')}</Link>
+                                <div className={cx('logOut-div')} onClick={handleLogOut}>
+                                    <SignOutIcon width="1.8rem" classsName={cx('log-icon')} />
+                                </div>
+                            </div>
+                            : <div onClick={handleModel} >
+                                <UserIcon classsName={cx('header-login--button')} />
+                            </div>}
                     </div>
-                    : <div onClick= {handleModel} >
-                        <UserIcon  classsName={cx('header-login--button')}/>    
-                    </div>}
                 </div>
-            </div>
-            <NavMenu  />
-        </header>
+                <NavMenu />
+            </header>
         </>
-        );
+    );
 }
 
 export default Header;

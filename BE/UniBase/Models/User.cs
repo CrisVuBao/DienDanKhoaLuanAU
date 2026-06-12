@@ -13,8 +13,6 @@ namespace UniBase.Models
         public string? ClassName { get; set; }
         [NotMapped]
         public string? DepartmentName { get; set; }
-        [NotMapped]
-        public string? SpecializedName { get; set; }
         public User()
         {
             Comments = new HashSet<Comment>();
@@ -28,7 +26,6 @@ namespace UniBase.Models
         public string? UserGroup { get; set; }
         public int? DepartmentId { get; set; }
         public int? ClassId { get; set; }
-        public int? SpecializedId { get; set; }
         public string? Name { get; set; } = null!;
         public string? PhoneNumber { get; set; }
         public string? Email { get; set; } = null!;
@@ -39,8 +36,6 @@ namespace UniBase.Models
 
         [System.Text.Json.Serialization.JsonIgnore]
         public virtual Department? Department { get; set; }
-        [System.Text.Json.Serialization.JsonIgnore]
-        public virtual Specialized? Specialized { get; set; }
         [System.Text.Json.Serialization.JsonIgnore]
         public virtual ICollection<Comment>? Comments { get; set; }
         [System.Text.Json.Serialization.JsonIgnore]

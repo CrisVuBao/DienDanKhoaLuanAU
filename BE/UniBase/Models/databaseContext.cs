@@ -114,11 +114,6 @@ namespace UniBase.Models
                     .WithMany(p => p.Users)
                     .HasForeignKey(d => d.DepartmentId)
                     .HasConstraintName("FK_User_Department");
-
-                entity.HasOne(d => d.Specialized)
-                    .WithMany(p => p.Users)
-                    .HasForeignKey(d => d.SpecializedId)
-                    .HasConstraintName("FK_User_Specialized");
             });
 
             modelBuilder.Entity<CommentFeedback>(entity =>

@@ -19,13 +19,11 @@ namespace UniBase.Respositories
         {
             var users = await _context.Users
                 .Include(u => u.Department)
-                .Include(u => u.Specialized)
                 .ToListAsync();
 
             foreach (var user in users)
             {
                 user.DepartmentName = user.Department?.Name;
-                user.SpecializedName = user.Specialized?.Name;
             }
 
             return users;
@@ -88,7 +86,6 @@ namespace UniBase.Respositories
                     checkComment = newUser.checkComment ?? 0,
                     ClassId = newUser.ClassId ,
                     DepartmentId = newUser.DepartmentId,
-                    SpecializedId = newUser.SpecializedId,
                     Image = fileName 
 
                 };
@@ -130,7 +127,6 @@ namespace UniBase.Respositories
                 
                 existingUser.ClassId = updatedUser.ClassId;
                 existingUser.DepartmentId = updatedUser.DepartmentId;
-                existingUser.SpecializedId = updatedUser.SpecializedId;
 
                 if (updatedUser.ImageFile != null )
                 {
@@ -243,13 +239,11 @@ namespace UniBase.Respositories
             {
                 var user = await _context.Users
                     .Include(u => u.Department)
-                    .Include(u => u.Specialized)
                     .FirstOrDefaultAsync(u => u.UserId == userId);
 
                 if (user != null)
                 {
                     user.DepartmentName = user.Department?.Name;
-                    user.SpecializedName = user.Specialized?.Name;
                 }
 
                 return user;
@@ -297,14 +291,12 @@ namespace UniBase.Respositories
             {
                 var users = await _context.Users
                     .Include(u => u.Department)
-                    .Include(u => u.Specialized)
                     .Where(u => u.Name.Contains(userName))
                     .ToListAsync();
 
                 foreach (var user in users)
                 {
                     user.DepartmentName = user.Department?.Name;
-                    user.SpecializedName = user.Specialized?.Name;
                 }
 
                 return users;
@@ -327,7 +319,6 @@ namespace UniBase.Respositories
                 if (user != null)
                 {
                     user.DepartmentName = user.Department?.Name;
-                    user.SpecializedName = user.Specialized?.Name;
                 }
 
                 return user;

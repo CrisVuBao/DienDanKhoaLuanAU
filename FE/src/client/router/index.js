@@ -120,4 +120,4 @@ const adminRouter = [
 
 const publicRouter = [...basicRouter, ...loggedInRoutes, ...adminRouter];
 
-export { publicRouter };
+export { publicRouter, basicRouter, loggedInRoutes, adminRouter };

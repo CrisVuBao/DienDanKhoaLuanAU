@@ -4,22 +4,33 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-import { publicRouter } from "./client/router";
+import { basicRouter, loggedInRoutes, adminRouter } from "./client/router";
 import React from "react";
 
 export const MyContext = React.createContext();
 
 function App() {
   
+  const PrivateRoute = ({ children }) => {
+    const isAuth = !!localStorage.getItem("token");
+    return isAuth ? children : <Navigate to="/" />;
+  };
+
+  const AdminRoute = ({ children }) => {
+    const isAuth = !!localStorage.getItem("token");
+    const role = localStorage.getItem("UserGroup");
+    return isAuth && role === "ADMIN" ? children : <Navigate to="/" />;
+  };
+
   return (
     <Router>
       <Routes>
-        {publicRouter.map((item, index) => {
+        {basicRouter.map((item, index) => {
           const Page = item.component;
           const Layout = item.layout;
           return (
             <Route
-              key={index}
+              key={`basic_${index}`}
               path={item.path}
               element={
                 item.type === "adminLogin" ? (
@@ -35,10 +46,48 @@ function App() {
             />
           );
         })}
+        {loggedInRoutes.map((item, index) => {
+          const Page = item.component;
+          const Layout = item.layout;
+          return (
+            <Route
+              key={`user_${index}`}
+              path={item.path}
+              element={
+                <PrivateRoute>
+                  <MyContext.Provider value={item.type}>
+                    <Layout>
+                      <Page />
+                    </Layout>
+                  </MyContext.Provider>
+                </PrivateRoute>
+              }
+            />
+          );
+        })}
+        {adminRouter.map((item, index) => {
+          const Page = item.component;
+          const Layout = item.layout;
+          return (
+            <Route
+              key={`admin_${index}`}
+              path={item.path}
+              element={
+                <AdminRoute>
+                  <MyContext.Provider value={item.type}>
+                    <Layout>
+                      <Page />
+                    </Layout>
+                  </MyContext.Provider>
+                </AdminRoute>
+              }
+            />
+          );
+        })}
         {/* Nếu không có route nào khớp, chuyển hướng về trang chủ */}
         <Route
           path="*"
-          element={<Navigate to="/" replace />} // Navigate to="/" để chuyển hướng, replace để thay thế lịch sử
+          element={<Navigate to="/" replace />}
         />
       </Routes>
     </Router>

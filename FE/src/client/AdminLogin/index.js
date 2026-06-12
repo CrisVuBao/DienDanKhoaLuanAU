@@ -18,8 +18,10 @@ function AdminLogin() {
             warning.current.style.display = 'block'
         } else {
             const rs = await ServiceUser.GetByUserName(inputUser.current.value, inputPass.current.value)
-                if(rs) {
-                    if(rs.UserGroup === 'ADMIN'){
+                if(rs && rs.Token) {
+                    const user = rs.User;
+                    if(user.UserGroup === 'ADMIN'){
+                        localStorage.setItem('token', rs.Token);
                         localStorage.setItem("adminLogin", "login")
                         window.location.href = '/admin';
                     }else {

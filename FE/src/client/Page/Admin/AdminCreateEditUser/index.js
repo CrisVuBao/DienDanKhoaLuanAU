@@ -9,8 +9,6 @@ import "react-notifications/lib/notifications.css";
 import * as ServiceApiDeparment from "./../../../apiServieces/Deparment";
 import { useContext, useEffect, useRef, useState } from "react";
 import { MyContext } from "../../../../App";
-import * as ServiceApiClass from "./../../../apiServieces/ClassApi";
-import * as ServiceApiSpecialized from "./../../../apiServieces/Specialized";
 import * as ServiceApiUser from "./../../../apiServieces/UserApi";
 import { useParams } from "react-router-dom";
 import UserImg from "../../../Image/user.png";
@@ -25,13 +23,9 @@ function AdminCreateEditUser() {
     imgSrc: UserImg,
   });
   const [deparment, setDeparment] = useState([]);
-  const [classes, setClasses] = useState([]);
-  const [speciolized, setSpeciolized] = useState([]);
   const [deparmentSelect, setDeparmentSelect] = useState([]);
   const [sex, setSex] = useState(null);
   const [chucvu, setChucvu] = useState(null);
-  const [classesSelect, setClassesSelect] = useState([]);
-  const [speciolizedSelect, setSpeciolizedSelect] = useState([]);
   const fullnameRef = useRef(null);
   const phoneRef = useRef(null);
   const emailRef = useRef(null);
@@ -51,9 +45,6 @@ function AdminCreateEditUser() {
       setSex(infoEdit?.Sex);
       setChucvu(infoEdit?.UserGroup);
       setDeparmentSelect(infoEdit?.DepartmentId);
-      handleSelectClassSpecialized(infoEdit.DepartmentId, infoEdit.ClassId);
-      setSpeciolizedSelect(infoEdit.SpecializedId);
-      setClassesSelect(infoEdit.ClassId);
       usenameRef.current.value = infoEdit?.Username;
       passwordRef.current.value = infoEdit?.Password;
       setimgUrl((prev) => ({
@@ -121,31 +112,7 @@ function AdminCreateEditUser() {
     }
   };
   //class
-  const fetchApiClassgetSpecializedId = async (value) => {
-    try {
-      const result = await ServiceApiClass.getSpecializedId(value);
-      return result;
-    } catch (error) {
-      throw Error;
-    }
-  };
-  const fetchApiClassId = async (value) => {
-    try {
-      const result = await ServiceApiClass.getById(value);
-      return result;
-    } catch (error) {
-      throw Error;
-    }
-  };
   //specialized
-  const fetchApiSpecialized = async (value) => {
-    try {
-      const result = await ServiceApiSpecialized.getByDeparmentId(value);
-      return result;
-    } catch (error) {
-      throw Error;
-    }
-  };
   //CreateUserPost
   const fetchApiCreateUser = async (option) => {
     try {
@@ -155,68 +122,8 @@ function AdminCreateEditUser() {
       throw Error;
     }
   };
-  //handle setSelect class and specizlized
-  const handleSelectClassSpecialized = async (deparmentId, classIesd) => {
-    try {
-      const Specialized = await fetchApiSpecialized(deparmentId);
-      const resultClass = await fetchApiClassId(classIesd);
-      if (!Specialized || Specialized.length === 0) {
-        return;
-      }
-      if (!resultClass) {
-        return;
-      }
-      setClasses([resultClass]);
-      setSpeciolized(Specialized);
-    } catch (error) {
-      console.error(error);
-    } finally {
-    }
-  };
-
-  //handle specizlized and class by Deparment
-  const handleSpecializedClass = async (value) => {
-    setClassesSelect([]);
-    try {
-      const Specialized = await fetchApiSpecialized(value);
-      if (!Specialized || Specialized.length === 0) {
-        setSpeciolized([]);
-        setSpeciolizedSelect([]);
-        return;
-      }
-      const resultClass = await fetchApiClassgetSpecializedId(
-        Specialized[0].SpecializedId
-      );
-      if (!resultClass) {
-        return;
-      }
-
-      setClasses([resultClass]);
-      setSpeciolized(Specialized);
-      setClassesSelect(resultClass.ClassId);
-      setSpeciolizedSelect(
-        Specialized.length > 0 && Specialized[0].SpecializedId
-      );
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setDeparmentSelect(value);
-    }
-  };
   const handleChangeDeparment = async (value) => {
-    handleSpecializedClass(value);
-  };
-  const handleChangeSpecialized = async (value) => {
-    try {
-      const result = await fetchApiClassgetSpecializedId(value);
-      setClasses([result]);
-      setClassesSelect(result.ClassId);
-
-      setSpeciolizedSelect(value);
-    } catch (error) {}
-  };
-  const handleChangeClass = (value) => {
-    setClassesSelect(value);
+    setDeparmentSelect(value);
   };
 
   const handleRadioChange = (e) => {
@@ -235,8 +142,6 @@ function AdminCreateEditUser() {
     formData.append("Address", addressRef.current?.value);
     formData.append("DateOfBirth", birthRef.current?.value);
     formData.append("DepartmentId", deparmentSelect);
-    formData.append("ClassId", classesSelect);
-    formData.append("SpecializedId", speciolizedSelect);
     formData.append("UserGroup", chucvu);
     formData.append("Sex", sex);
     formData.append("ImageFile", imgUrl.imgFile);
@@ -280,8 +185,6 @@ function AdminCreateEditUser() {
             fullnameRef.current.focus();
             setChucvu("");
             setDeparmentSelect("");
-            setClassesSelect("");
-            setSpeciolizedSelect("");
             setSex("");
             setimgUrl((prev) => ({
               ...prev,
@@ -414,8 +317,7 @@ function AdminCreateEditUser() {
                 option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
               }
             >
-              <Option value="SV">Sinh Viên</Option>
-              <Option value="GV">Giáo Viên</Option>
+              <Option value="USER">USER</Option>
               <Option value="ADMIN">ADMIN</Option>
             </Select>
           </div>
@@ -445,70 +347,6 @@ function AdminCreateEditUser() {
                     {item.Name}
                   </Option>
                 ))}
-            </Select>
-          </div>
-          <div className={cx("form-input")}>
-            <span className={cx("form-lable")}>
-              <div>
-                Chuyên ngành
-                <span className={cx("require")}>*</span>
-              </div>
-              <span>:</span>
-            </span>
-            <Select
-              className={cx("form-select")}
-              showSearch
-              value={
-                type === "AdminEditUser"
-                  ? speciolizedSelect
-                  : speciolized.length > 0 && speciolizedSelect
-              }
-              style={{ width: 200 }}
-              placeholder="Chọn Chuyên Ngành"
-              optionFilterProp="children"
-              onChange={handleChangeSpecialized}
-              filterOption={(input, option) =>
-                option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-              }
-            >
-              {speciolized.map((item, index) => (
-                <Option key={index} value={item.SpecializedId}>
-                  {item.Name}
-                </Option>
-              ))}
-            </Select>
-          </div>
-          <div className={cx("form-input")}>
-            <span className={cx("form-lable")}>
-              <div>
-                Lớp
-                <span className={cx("require")}>*</span>
-              </div>
-              <span>:</span>
-            </span>
-            <Select
-              className={cx("form-select")}
-              showSearch
-              style={{ width: 200 }}
-              value={
-                type === "AdminEditUser"
-                  ? classesSelect
-                  : speciolized.length > 0 &&
-                    classes.length > 0 &&
-                    classesSelect
-              }
-              placeholder="Chọn Lớp"
-              optionFilterProp="children"
-              onChange={handleChangeClass}
-              filterOption={(input, option) =>
-                option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-              }
-            >
-              {classes.map((item, index) => (
-                <Option key={index} value={item.ClassId}>
-                  {item.Name}
-                </Option>
-              ))}
             </Select>
           </div>
           <div className={cx("form-input")}>

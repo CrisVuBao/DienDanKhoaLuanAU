@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UniBase.DTO
 {
@@ -10,7 +10,6 @@ namespace UniBase.DTO
         public string? UserGroup { get; set; }
         public int? DepartmentId { get; set; }
         public int? ClassId { get; set; }
-        public int? SpecializedId { get; set; }
         public string? Name { get; set; } = null!;
         public string? PhoneNumber { get; set; }
         public string Email { get; set; } = null!;

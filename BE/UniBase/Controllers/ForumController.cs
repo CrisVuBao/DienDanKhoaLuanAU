@@ -3,12 +3,14 @@ using UniBase.Respositories;
 using UniBase.Interfaces;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace UniBase.Controllers
 {
     [EnableCors("AllowAll")]
     [Route("api/v1/[controller]")]
     [ApiController]
+    [Authorize(Roles = "ADMIN")]
     public class ForumController : ControllerBase
     {
         private readonly IForumRespositories _resp;
@@ -20,6 +22,7 @@ namespace UniBase.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<ActionResult> getAll()
         {
             try
@@ -97,6 +100,7 @@ namespace UniBase.Controllers
             }
         }
         [HttpGet("getByName/{name}")]
+        [AllowAnonymous]
         public async Task<ActionResult<Forum>> GetForumByName(string name)
         {
             var user = await _resp.getByName(name);
@@ -109,6 +113,7 @@ namespace UniBase.Controllers
             return Ok(user);
         }
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult<Forum>> GetForumById(int id)
         {
             var forrum = await _resp.getById(id);
@@ -121,6 +126,7 @@ namespace UniBase.Controllers
             return Ok(forrum);
         }
         [HttpGet("getByUsername/{username} {pass}")]
+        [AllowAnonymous]
         public async Task<ActionResult<Forum>> GetByForumTitle(string username)
         {
             var forrum = await _resp.getByForumTitle(username);

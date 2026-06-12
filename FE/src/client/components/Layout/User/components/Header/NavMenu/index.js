@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import * as ServiceUserApi from './../../../../../../apiServieces/UserApi'
 import { MyContext } from "../../../../../../../App";
-import {  BarIcon1  } from "../../../../../../Icon";
+import { BarIcon1 } from "../../../../../../Icon";
 
 
 
@@ -22,48 +22,48 @@ function NavMenu() {
         const rs = await ServiceUserApi.GetById(id)
         setDataUser(rs)
     }
-   
+
     useEffect(() => {
         fecthUserGetByName(localStorage.getItem('userId'))
-    },[])
-    return ( 
+    }, [])
+    return (
         <div className={cx('header-menu')}>
             <nav className={cx('nav-menu')}>
                 <div className={cx('nav-list')} >
                     <div className={cx('div-nav')} onClick={toggleMenu}>
-                        <BarIcon1 classsName={cx('nav-bar')}/>
+                        <BarIcon1 classsName={cx('nav-bar')} />
                     </div>
-                    <div className={cx({'overFlow': showMenu}) } onClick={toggleMenu}></div>
-                    <ul className={cx('nav-ul',"m-0 p-0", {'open': showMenu})}>
-                        <Link to={'/'}   
+                    <div className={cx({ 'overFlow': showMenu })} onClick={toggleMenu}></div>
+                    <ul className={cx('nav-ul', "m-0 p-0", { 'open': showMenu })}>
+                        <Link to={'/'}
                             onClick={toggleMenu}
-                            className={cx('nav-item', {'selected':  type.includes('homeUser')})}
+                            className={cx('nav-item', { 'selected': type.includes('homeUser') })}
                         >
                             TRANG CHỦ
                         </Link>
-                        {localStorage.getItem('statusLogin') === 'login' && (dataUser && dataUser.UserGroup === 'GV')  &&
-                        <Link to={'/projectsManager'} 
-                         onClick={toggleMenu}   
-                            className={cx('nav-item', {'selected': ('projectsManager' === type || type === 'projectEditUser' || type === 'projectCreateUser')})}
-                        >
-                            QUẢN LÍ KHÓA LUẬN
-                        </Link>
+                        {localStorage.getItem('statusLogin') === 'login' && (dataUser && dataUser.UserGroup === 'GV') &&
+                            <Link to={'/projectsManager'}
+                                onClick={toggleMenu}
+                                className={cx('nav-item', { 'selected': ('projectsManager' === type || type === 'projectEditUser' || type === 'projectCreateUser') })}
+                            >
+                                QUẢN LÍ TÀI LIỆU
+                            </Link>
                         }
-                        <Link to={'/projects'}  
-                            onClick={toggleMenu} 
-                            className={cx('nav-item', {'selected':  type === 'projects' || 'projectPost' === type || type === 'projectsByDeparmentId' })}
+                        <Link to={'/projects'}
+                            onClick={toggleMenu}
+                            className={cx('nav-item', { 'selected': type === 'projects' || 'projectPost' === type || type === 'projectsByDeparmentId' })}
                         >
-                            DANH SÁCH KHÓA LUẬN
+                            DANH SÁCH TÀI LIỆU
                         </Link>
-                        <Link to={'/forum'}  
-                            onClick={toggleMenu} 
-                            className={cx('nav-item', {'selected':  type.includes('forum')})}
+                        <Link to={'/forum'}
+                            onClick={toggleMenu}
+                            className={cx('nav-item', { 'selected': type.includes('forum') })}
                         >
                             DIỄN ĐÀN
                         </Link>
-                        <Link to={'/quydinh'}  
-                            onClick={toggleMenu} 
-                            className={cx('nav-item', {'selected':  type.includes('quydinh')})}
+                        <Link to={'/quydinh'}
+                            onClick={toggleMenu}
+                            className={cx('nav-item', { 'selected': type.includes('quydinh') })}
                         >
                             QUY ĐỊNH
                         </Link>
@@ -78,7 +78,7 @@ function NavMenu() {
                 } */}
             </nav>
         </div>
-     );
+    );
 }
 
 export default NavMenu;

@@ -3,6 +3,7 @@ using UniBase.Respositories;
 using UniBase.Interfaces;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace UniBase.Controllers
 {
@@ -10,6 +11,7 @@ namespace UniBase.Controllers
     [EnableCors("AllowAll")]
     [Route("api/v1/[controller]")]
     [ApiController]
+    [Authorize]
     public class CommentController : ControllerBase
     {
         private readonly ICommentRespositories _resp;
@@ -23,6 +25,7 @@ namespace UniBase.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<ActionResult> getAll()
         {
             try
@@ -186,6 +189,7 @@ namespace UniBase.Controllers
         }
 
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult<Comment>> GetCommentById(int id)
         {
             var comment = await _resp.getById(id);
@@ -199,6 +203,7 @@ namespace UniBase.Controllers
         }
 
         [HttpGet("getByTypePost/{CommentType} {PostId}")]
+        [AllowAnonymous]
         public async Task<ActionResult<Comment>> GetByUsername(string CommentType, int PostId)
         {
             var comment = await _resp.getByTypePostId(CommentType, PostId);
@@ -212,6 +217,7 @@ namespace UniBase.Controllers
         }
 
         [HttpGet("getByByCommentId/{CommentId}")]
+        [AllowAnonymous]
         public async Task<ActionResult<Comment>> GetBybyCommentId( int CommentId)
         {
             var comment = await _resp.getBybyCommentId( CommentId);
@@ -225,6 +231,7 @@ namespace UniBase.Controllers
         }
 
         [HttpGet("getByTypePostCommentId/{CommentType} {PostId} {ByCommentId}")]
+        [AllowAnonymous]
         public async Task<ActionResult<Comment>> GetByTypePostCommentId(string CommentType, int PostId, int ByCommentId)
         {
             var comment = await _resp.getByTypePostCommentId(CommentType, PostId, ByCommentId);
@@ -238,6 +245,7 @@ namespace UniBase.Controllers
         }
 
         [HttpGet("getByTypePostCommentIdotherNull/{CommentType} {PostId}")]
+        [AllowAnonymous]
         public async Task<ActionResult<Comment>> GetByTypePostCommentIdotherNull(string CommentType, int PostId)
         {
             var comment = await _resp.getByTypePostCommentIdotherNull(CommentType, PostId);

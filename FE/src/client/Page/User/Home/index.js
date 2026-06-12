@@ -14,9 +14,9 @@ import slide3Img from '../../../Image/slide3.jpg'
 import { useRef } from "react";
 import { PrevIcon, NextIcon } from "../../../Icon";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper-bundle.css'; 
+import 'swiper/swiper-bundle.css';
 import Tippy from '@tippyjs/react';
-import 'tippy.js/dist/tippy.css'; 
+import 'tippy.js/dist/tippy.css';
 const cx = classNames.bind(styles)
 
 function Home() {
@@ -25,18 +25,18 @@ function Home() {
     const swiperRef = useRef(null);
     const goNext = () => {
         if (swiperRef.current && swiperRef.current.swiper) {
-        swiperRef.current.swiper.slideNext();
+            swiperRef.current.swiper.slideNext();
         }
     };
 
     const goPrev = () => {
         if (swiperRef.current && swiperRef.current.swiper) {
-        swiperRef.current.swiper.slidePrev();
+            swiperRef.current.swiper.slidePrev();
         }
     };
     const slide_img = [
-         slide1Img, slide2Img, slide3Img
-      ];
+        slide1Img, slide2Img, slide3Img
+    ];
     const fecthProjectGetThreeDataBig = async () => {
         const rs = await ServiceProjectApi.GetThreeDataBig()
         setWatchDataBig(rs)
@@ -48,9 +48,9 @@ function Home() {
     useEffect(() => {
         fecthProjectGetThreeDataBig()
         fecthProjectGetThreeDataBigDownload()
-    },[])
-    return ( 
-        <div className={cx('content')}>  
+    }, [])
+    return (
+        <div className={cx('content')}>
             <div className={cx('content-slide')}>
                 <Swiper
                     grabCursor={true}
@@ -58,11 +58,11 @@ function Home() {
                     loop={true}
                     slidesPerView={1}
                     coverflowEffect={{
-                    rotate: 0,
-                    stretch: 0,
-                    depth: 0,
-                    modifier: 0,
-                    slideShadows: false,
+                        rotate: 0,
+                        stretch: 0,
+                        depth: 0,
+                        modifier: 0,
+                        slideShadows: false,
                     }}
                     spaceBetween={0}
                     pagination={true}
@@ -71,33 +71,33 @@ function Home() {
                     ref={swiperRef}
                 >
                     {slide_img.map((img, i) => {
-                    return (
-                        <SwiperSlide className={cx('swiper-slide')} key={i}>
-                            <img  src={img} alt="" />
-                        </SwiperSlide>
-                    );
+                        return (
+                            <SwiperSlide className={cx('swiper-slide')} key={i}>
+                                <img src={img} alt="" />
+                            </SwiperSlide>
+                        );
                     })}
                 </Swiper>
-                <button className={cx('buttonSlidePrev')} onClick={goPrev}><PrevIcon classsName={cx('iconSlide')}/></button>
-                <button className={cx('buttonSlideNext')} onClick={goNext}><NextIcon classsName={cx('iconSlide')}/></button>
-                 
+                <button className={cx('buttonSlidePrev')} onClick={goPrev}><PrevIcon classsName={cx('iconSlide')} /></button>
+                <button className={cx('buttonSlideNext')} onClick={goNext}><NextIcon classsName={cx('iconSlide')} /></button>
+
             </div>
             <div className={cx('content-introduce')}>
                 <div className={cx('introduce-text')}>
                     <h3>GIỚI THIỆU</h3>
-                    <span>Website khóa luận tốt nghiệp và diễn đàn trao đổi cho sinh viên </span>
+                    <span>Website diễn dàn chia sẻ tài liệu đại học  </span>
                 </div>
-                <div className={cx('introduce-content','row')}>
-                    <Link to={'/forum'} className={cx('introduce-img','col-12 col-md-4')} >
-                        <img src={intro1Img} alt=""/>
+                <div className={cx('introduce-content', 'row')}>
+                    <Link to={'/forum'} className={cx('introduce-img', 'col-12 col-md-4')} >
+                        <img src={intro1Img} alt="" />
                         <span>Trao đổi thông tin</span>
                     </Link>
-                    <Link to={'/forum'} className={cx('introduce-img','col-12 col-md-4')}>
-                        <img src={intro2Img} alt=""/>
+                    <Link to={'/forum'} className={cx('introduce-img', 'col-12 col-md-4')}>
+                        <img src={intro2Img} alt="" />
                         <span>Chia sẻ kinh nghiệm</span>
                     </Link>
-                    <Link to={'/forum'} className={cx('introduce-img','col-12 col-md-4')}>
-                        <img src={intro3Img} alt=""/>
+                    <Link to={'/forum'} className={cx('introduce-img', 'col-12 col-md-4')}>
+                        <img src={intro3Img} alt="" />
                         <span>Định hướng nghiên cứu</span>
                     </Link>
                 </div>
@@ -107,52 +107,52 @@ function Home() {
                 <div className={cx('content-news')}>
                     <div className={cx('news-tab')}>
                         <div className={cx('news-tabLabel')}><h2>Xem nhiều nhất</h2></div>
-                        <Link  to={'/projects'} className={cx('news-tabAll')}>Xem tất cả</Link>
+                        <Link to={'/projects'} className={cx('news-tabAll')}>Xem tất cả</Link>
                     </div>
-                    <div className={cx('newsAll','row')}>
+                    <div className={cx('newsAll', 'row')}>
                         {
-                            watchDataBig && watchDataBig.length > 0 && 
+                            watchDataBig && watchDataBig.length > 0 &&
                             watchDataBig.map((item, index) => (
-                                <Tippy key={index} 
-                                        content={
-                                            <div key={index}>
-                                                {item.Name}
-                                            </div>
-                                        }  
-                                        
+                                <Tippy key={index}
+                                    content={
+                                        <div key={index}>
+                                            {item.Name}
+                                        </div>
+                                    }
+
                                     arrow={true}
-                                    className={cx('customTippy')} 
+                                    className={cx('customTippy')}
                                 >
-                                    <Link key={index}  
-                                        to={`/projectPost/${item.ProjectListId}/${item.UserName}`} 
-                                        className={cx('news-info','col-12 col-lg-4 ')}
+                                    <Link key={index}
+                                        to={`/projectPost/${item.ProjectListId}/${item.UserName}`}
+                                        className={cx('news-info', 'col-12 col-lg-4 ')}
                                     >
                                         <div className={cx('news-left')}>
-                                            <img src={postImg} alt="img"/>
+                                            <img src={postImg} alt="img" />
                                         </div>
                                         <div className={cx('news-right')}>
                                             <div className={cx('newsRight-lable')}>
-                                                {item.Name}        
+                                                {item.Name}
                                             </div>
                                             <div className={cx('newsRight-introduce')}>
                                                 <div className={cx('newsRight-name')}>{item.UserName}</div>
-                                                <div><EyeIcon width="1.8rem"/> {item.Watched}</div>
-                                                <div><DowIcon width="1.8rem"/> {item.Download}</div>
+                                                <div><EyeIcon width="1.8rem" /> {item.Watched}</div>
+                                                <div><DowIcon width="1.8rem" /> {item.Download}</div>
                                             </div>
                                             <div className={cx('newsRight-date')}>
-                                                <DateIcon width="1rem"/>
+                                                <DateIcon width="1rem" />
                                                 <span>{new Date(item.CreatedDate).toLocaleDateString()}</span>
-                                                
+
                                             </div>
-                                            <div className={cx('newsRight-info')} 
-                                                dangerouslySetInnerHTML={{ __html: item.Discriptions }} 
+                                            <div className={cx('newsRight-info')}
+                                                dangerouslySetInnerHTML={{ __html: item.Discriptions }}
                                             />
-                                            
+
                                         </div>
                                     </Link>
                                 </Tippy>
                             ))
-                        }  
+                        }
                     </div>
                 </div>
             }
@@ -161,58 +161,58 @@ function Home() {
                 <div className={cx('content-news')}>
                     <div className={cx('news-tab')}>
                         <div className={cx('news-tabLabel')}><h2>Tải nhiều nhất</h2></div>
-                        <Link  to={'/projects'} className={cx('news-tabAll')}>Xem tất cả</Link>
+                        <Link to={'/projects'} className={cx('news-tabAll')}>Xem tất cả</Link>
                     </div>
-                    <div className={cx('newsAll','row')}>
+                    <div className={cx('newsAll', 'row')}>
                         {
-                            downloadDataBig && downloadDataBig.length > 0 && 
+                            downloadDataBig && downloadDataBig.length > 0 &&
                             downloadDataBig.map((item, index) => (
-                                <Tippy key={index} 
-                                        content={
-                                            <div key={index}>
-                                                {item.Name}
-                                            </div>
-                                        }  
+                                <Tippy key={index}
+                                    content={
+                                        <div key={index}>
+                                            {item.Name}
+                                        </div>
+                                    }
                                     arrow={true}
                                 >
-                                    <Link key={index}  
-                                        to={`/projectPost/${item.ProjectListId}/${item.UserName}`} 
-                                        className={cx('news-info','col-12 col-lg-4 ')}
+                                    <Link key={index}
+                                        to={`/projectPost/${item.ProjectListId}/${item.UserName}`}
+                                        className={cx('news-info', 'col-12 col-lg-4 ')}
                                     >
                                         <div className={cx('news-left')}>
-                                            <img src={postImg} alt="img"/>
+                                            <img src={postImg} alt="img" />
                                         </div>
                                         <div className={cx('news-right')}>
                                             <div className={cx('newsRight-lable')}>
-                                                {item.Name}        
+                                                {item.Name}
                                             </div>
                                             <div className={cx('newsRight-introduce')}>
                                                 <div className={cx('newsRight-name')}>{item.UserName}</div>
-                                                <div><EyeIcon width="1.8rem"/> {item.Watched}</div>
-                                                <div><DowIcon width="1.8rem"/> {item.Download}</div>
+                                                <div><EyeIcon width="1.8rem" /> {item.Watched}</div>
+                                                <div><DowIcon width="1.8rem" /> {item.Download}</div>
                                             </div>
                                             <div className={cx('newsRight-date')}>
-                                                <DateIcon width="1.2rem"/>
+                                                <DateIcon width="1.2rem" />
                                                 <span>{new Date(item.CreatedDate).toLocaleDateString()}</span>
-                                                
+
                                             </div>
-                                            <div className={cx('newsRight-info')} 
-                                                dangerouslySetInnerHTML={{ __html: item.Discriptions }} 
+                                            <div className={cx('newsRight-info')}
+                                                dangerouslySetInnerHTML={{ __html: item.Discriptions }}
                                             />
-                                            
+
                                         </div>
                                     </Link>
 
-                                    </Tippy>
+                                </Tippy>
                             ))
                         }
-                        
+
                     </div>
-                
+
                 </div>
             }
         </div>
-     );
+    );
 }
 
 export default Home;

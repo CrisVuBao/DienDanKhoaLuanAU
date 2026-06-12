@@ -6,7 +6,7 @@ import 'react-quill/dist/quill.snow.css';
 import { NotificationManager, NotificationContainer } from 'react-notifications';
 import * as ServiceProjectListApi from './../../../apiServieces/ProjectListApi'
 import { MyContext } from "../../../../App"; 
-import * as ServiceSchoolYearApi from './../../../apiServieces/SchoolYear'
+import * as ServiceApiDeparment from "./../../../apiServieces/Deparment"
 import { Button, Select } from 'antd';
 import { useEffect,useContext,useRef,useState } from 'react';
 import { format } from "date-fns";
@@ -19,8 +19,8 @@ function ProjectCreateEdit() {
 
     const [content, setContent] = useState('');
     
-    const [schoolYear, setSchoolYear] = useState([])
-    const [schoolYearSelect, setSchoolYearSelect] = useState([])
+    const [department, setDepartment] = useState([])
+    const [departmentSelect, setDepartmentSelect] = useState([])
     const [fileSelect, setFileSelect] = useState('')
     const titleRef = useRef()
     let isEmptyField = false
@@ -29,12 +29,12 @@ function ProjectCreateEdit() {
     const handleChange = value => {
         setContent(value);
     }
-    const fecthSchoolYearGetAll = async () => {
-        const rs = await ServiceSchoolYearApi.GetAll()
-        setSchoolYear(rs)
+    const fecthDepartmentGetAll = async () => {
+        const rs = await ServiceApiDeparment.GetAll()
+        setDepartment(rs)
     }
-    const handleChangeSchoolYear = (value) => {
-        setSchoolYearSelect(value)
+    const handleChangeDepartment = (value) => {
+        setDepartmentSelect(value)
     }
     const fecthProjectListCreate = async (option) => {
         const rs = await ServiceProjectListApi.CreateProjectList(option)
@@ -47,7 +47,7 @@ function ProjectCreateEdit() {
     const fecthProjectGetById = async (id) => {
         const rs = await ServiceProjectListApi.GetById(id)
         setContent(rs.Discriptions)
-        setSchoolYearSelect(rs.SchoolYearId)
+        setDepartmentSelect(rs.DepartmentId)
         titleRef.current.value = rs.Name
         // setFileSelect(rs.Image)
 
@@ -58,7 +58,7 @@ function ProjectCreateEdit() {
         formData.append('UserId', localStorage.getItem('userId'))
         formData.append('Discriptions', content)
         formData.append('CreatedDate', format(new Date(), "yyyy-MM-dd'T'HH:mm:ss"))
-        formData.append('SchoolYearId', schoolYearSelect)
+        formData.append('DepartmentId', departmentSelect)
         formData.append('ImageFile', fileSelect)
         formData.append('CheckAdmin', 0)
         
@@ -118,7 +118,7 @@ function ProjectCreateEdit() {
         if(type === 'projectEditUser') {
             fecthProjectGetById(projectId)
         }
-        fecthSchoolYearGetAll()
+        fecthDepartmentGetAll()
 
     },[type,projectId])
     
@@ -164,21 +164,21 @@ function ProjectCreateEdit() {
         </div>
         <div className={cx('upload-select')} >
             <div className={cx('select-box')}>
-                <span>Năm học:</span>
+                <span>Khoa:</span>
                 <Select
                     className={cx('form-select')}
                     showSearch
-                    value={  schoolYearSelect}
+                    value={departmentSelect}
                     style={{ width: 200 }}
-                    placeholder="Chọn năm học"
+                    placeholder="Chọn khoa"
                     optionFilterProp="children"
-                    onChange={handleChangeSchoolYear}
+                    onChange={handleChangeDepartment}
                     filterOption={(input, option) =>
                         option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
                     }
                 >
-                    {  schoolYear.map((item, index) => (
-                        <Option key={index} value={item.SchoolYearId}>{item.Name}</Option>
+                    {department.map((item, index) => (
+                        <Option key={index} value={item.DepartmentId}>{item.Name}</Option>
                     ))}
                     
                 </Select>

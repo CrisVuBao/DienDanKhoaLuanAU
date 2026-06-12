@@ -5,13 +5,14 @@ using UniBase.Interfaces;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Authorization;
 
 namespace UniBase.Controllers
 {
-   
     [EnableCors("AllowAll")]
     [Route("api/v1/[controller]")]
     [ApiController]
+    [Authorize]
     public class ProjectListController : ControllerBase
     {
         private readonly IProjectListRespositories _resp;
@@ -26,6 +27,7 @@ namespace UniBase.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<ActionResult> getAll()
         {
             try
@@ -41,6 +43,7 @@ namespace UniBase.Controllers
             }
         }
         [HttpGet("getAllAdmin")]
+        [Authorize(Roles = "ADMIN")]
         public async Task<ActionResult> getAllAdmin()
         {
             try
@@ -99,6 +102,7 @@ namespace UniBase.Controllers
             }
         }
         [HttpPut("checkAdmin")]
+        [Authorize(Roles = "ADMIN")]
         public async Task<ActionResult<ProjectList>> UpdateProjectsCheckAdmin([FromBody] List<ProjectList> model)
         {
             try
@@ -145,6 +149,7 @@ namespace UniBase.Controllers
             return Ok(user);
         }
         [HttpGet("getByName/{name}")]
+        [AllowAnonymous]
         public async Task<ActionResult<ProjectList>> GetByName(string name)
         {
             var user = await _resp.getByName(name);
@@ -170,6 +175,7 @@ namespace UniBase.Controllers
         }
         
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult> GetById(int id)
         {
             var project = await _resp.getById(id);
@@ -182,6 +188,7 @@ namespace UniBase.Controllers
             return Ok(project);
         }
         [HttpGet("getThreeDataBig")]
+        [AllowAnonymous]
         public async Task<ActionResult> getThreeDataBig()
         {
             var project = await _resp.getThreeDataBig();
@@ -194,6 +201,7 @@ namespace UniBase.Controllers
             return Ok(project);
         }
         [HttpGet("getThreeDataBigDownload")]
+        [AllowAnonymous]
         public async Task<ActionResult> getThreeDataBigDownload()
         {
             var project = await _resp.getThreeDataBigDownload();
@@ -206,6 +214,7 @@ namespace UniBase.Controllers
             return Ok(project);
         }
         [HttpGet("getByKhoa/{departmentId}")]
+        [AllowAnonymous]
         public async Task<ActionResult> getByKhoa(int departmentId)
         {
             var project = await _resp.getByKhoa(departmentId);
@@ -218,6 +227,7 @@ namespace UniBase.Controllers
             return Ok(project);
         }
         [HttpGet("getDataByNameAndKhoaId/{name} {departmentId}")]
+        [AllowAnonymous]
         public async Task<ActionResult> getDataByNameAndKhoaId(string name, int departmentId)
         {
             var project = await _resp.getDataByNameAndKhoaId(name, departmentId);

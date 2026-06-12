@@ -7,27 +7,31 @@ using UniBase.Models;
 using Microsoft.EntityFrameworkCore;
 using UniBase.DTO;
 using static System.Net.Mime.MediaTypeNames;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using Microsoft.AspNetCore.Authorization;
 
 namespace UniBase.Controllers
 {
     [EnableCors("AllowAll")]
     [Route("api/v1/[controller]")]
     [ApiController]
+    [Authorize]
     public class UserController : ControllerBase
     {
         private readonly IUserRespositores _resp;
+        private readonly IConfiguration _config;
 
-       /* private readonly databaseContext _databaseContext;*/
-
-        public UserController(IUserRespositores resp)
+        public UserController(IUserRespositores resp, IConfiguration config)
         {
-            
             _resp = resp;
-
-
+            _config = config;
         }
 
         [HttpGet]
+        [Authorize(Roles = "ADMIN")]
         public async Task<ActionResult> getAll()
         {
             try
@@ -44,6 +48,7 @@ namespace UniBase.Controllers
         }
        
         [HttpPost]
+        [Authorize(Roles = "ADMIN")]
         public async Task<ActionResult> addUser([FromForm] UserDTO newUser)
         {
             try
@@ -73,6 +78,7 @@ namespace UniBase.Controllers
             }
         }
         [HttpPut("{id}")]
+        [Authorize(Roles = "ADMIN")]
         public async Task<ActionResult> updateUser(int id, [FromForm] UserDTO updatedUser)
         {
             var success = await _resp.updateUser(id, updatedUser);
@@ -87,6 +93,7 @@ namespace UniBase.Controllers
             }
         }
         [HttpPut("checkComment/{id}")]
+        [Authorize(Roles = "ADMIN")]
         public async Task<ActionResult> updateUserCheckComment(int id,  User updatedUser)
         {
             var success = await _resp.updateUserCheckComment(id, updatedUser);
@@ -101,6 +108,7 @@ namespace UniBase.Controllers
             }
         }
         [HttpDelete("delete-multiple")]
+        [Authorize(Roles = "ADMIN")]
         public async Task<ActionResult> deleteUser([FromBody] int[] userIds)
         {
             if (userIds == null || userIds.Length == 0)
@@ -169,7 +177,8 @@ namespace UniBase.Controllers
         }
 
         [HttpGet("getByUsername/{username} {pass}")]
-        public async Task<ActionResult<User>> GetByUsername(string username, string pass)
+        [AllowAnonymous]
+        public async Task<ActionResult> GetByUsername(string username, string pass)
         {
             var user = await _resp.getByUsername(username, pass);
 
@@ -178,7 +187,23 @@ namespace UniBase.Controllers
                 return NotFound();
             }
 
-            return Ok(user);
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+            var claims = new[]
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
+                new Claim(ClaimTypes.Name, user.Username),
+                new Claim(ClaimTypes.Role, user.UserGroup ?? "USER")
+            };
+
+            var token = new JwtSecurityToken(_config["Jwt:Issuer"],
+              _config["Jwt:Audience"],
+              claims,
+              expires: DateTime.Now.AddMinutes(120),
+              signingCredentials: credentials);
+
+            return Ok(new { Token = new JwtSecurityTokenHandler().WriteToken(token), User = user });
         }
 
     }

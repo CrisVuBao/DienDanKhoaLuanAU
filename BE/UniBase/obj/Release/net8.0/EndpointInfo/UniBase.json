@@ -5,64 +5,6 @@
     "version": "v1"
   },
   "paths": {
-    "/api/v1/Class": {
-      "get": {
-        "tags": [
-          "Class"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/v1/Class/getSpecializedId/{id}": {
-      "get": {
-        "tags": [
-          "Class"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/v1/Class/getId/{id}": {
-      "get": {
-        "tags": [
-          "Class"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/v1/Comment": {
       "get": {
         "tags": [
@@ -1587,6 +1529,10 @@
                     "type": "integer",
                     "format": "int32"
                   },
+                  "DepartmentId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
                   "ImageFile": {
                     "type": "string",
                     "format": "binary"
@@ -1625,6 +1571,9 @@
                   "style": "form"
                 },
                 "SchoolYearId": {
+                  "style": "form"
+                },
+                "DepartmentId": {
                   "style": "form"
                 },
                 "ImageFile": {
@@ -1714,6 +1663,10 @@
                     "type": "integer",
                     "format": "int32"
                   },
+                  "DepartmentId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
                   "ImageFile": {
                     "type": "string",
                     "format": "binary"
@@ -1752,6 +1705,9 @@
                   "style": "form"
                 },
                 "SchoolYearId": {
+                  "style": "form"
+                },
+                "DepartmentId": {
                   "style": "form"
                 },
                 "ImageFile": {
@@ -2094,18 +2050,6 @@
         }
       }
     },
-    "/api/v1/SchoolYear": {
-      "get": {
-        "tags": [
-          "SchoolYear"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/v1/Specialized": {
       "get": {
         "tags": [
@@ -2206,10 +2150,6 @@
                     "type": "integer",
                     "format": "int32"
                   },
-                  "SpecializedId": {
-                    "type": "integer",
-                    "format": "int32"
-                  },
                   "Name": {
                     "type": "string"
                   },
@@ -2252,9 +2192,6 @@
                   "style": "form"
                 },
                 "ClassId": {
-                  "style": "form"
-                },
-                "SpecializedId": {
                   "style": "form"
                 },
                 "Name": {
@@ -2332,10 +2269,6 @@
                     "type": "integer",
                     "format": "int32"
                   },
-                  "SpecializedId": {
-                    "type": "integer",
-                    "format": "int32"
-                  },
                   "Name": {
                     "type": "string"
                   },
@@ -2378,9 +2311,6 @@
                   "style": "form"
                 },
                 "ClassId": {
-                  "style": "form"
-                },
-                "SpecializedId": {
                   "style": "form"
                 },
                 "Name": {
@@ -2681,24 +2611,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/UniBase.Models.User"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UniBase.Models.User"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UniBase.Models.User"
-                }
-              }
-            }
+            "description": "OK"
           }
         }
       }
@@ -2920,6 +2833,11 @@
             "type": "integer",
             "format": "int32",
             "nullable": true
+          },
+          "DepartmentId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -2932,10 +2850,6 @@
             "nullable": true
           },
           "DepartmentName": {
-            "type": "string",
-            "nullable": true
-          },
-          "SpecializedName": {
             "type": "string",
             "nullable": true
           },
@@ -2966,11 +2880,6 @@
             "nullable": true
           },
           "ClassId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "SpecializedId": {
             "type": "integer",
             "format": "int32",
             "nullable": true

@@ -79,9 +79,9 @@ function AdminProjectListCheck() {
     onFilter: (value, record) =>
       record[dataIndex]
         ? record[dataIndex]
-            .toString()
-            .toLowerCase()
-            .includes(value.toLowerCase())
+          .toString()
+          .toLowerCase()
+          .includes(value.toLowerCase())
         : "",
     onFilterDropdownVisibleChange: (visible) => {
       if (visible) {
@@ -93,7 +93,7 @@ function AdminProjectListCheck() {
   });
   const columns = [
     {
-      title: "Tên khóa luận",
+      title: "Tên tài liệu",
       dataIndex: "Name",
       key: "Name",
       width: "50%",
@@ -175,7 +175,7 @@ function AdminProjectListCheck() {
       }
     }
   };
-  
+
   const handleCheckboxChange = (selectedRowKeys, selectedRows) => {
     setSelectId(selectedRowKeys);
     // console.log('Selected Rows:', selectedRows);
@@ -189,37 +189,37 @@ function AdminProjectListCheck() {
   }, []);
   return (
     <div className={cx("wrapper")}>
-      <div className={cx("lable")}>Duyệt Khóa Luận</div>
+      <div className={cx("lable")}>Duyệt Tài Liệu</div>
       {/* {selectId.length > 0 && ( */}
-        <div className={cx("box")} style={{visibility: selectId.length > 0 ? "" : "hidden"}}>
-          <div className={cx("box-button")}>
-            <Button
-              onClick={() => handleCheckAdminSubmit("1")}
-              style={{
-                backgroundColor: "green",
-                color: "white",
-                marginRight: "10px",
-              }}
-              type="primary"
-            >
-              Duyệt
-            </Button>
-            <Button
-              onClick={() => handleCheckAdminSubmit("2")}
-              style={{ backgroundColor: "red", color: "white",marginRight: "10px", }}
-              type="error"
-            >
-              Không duyệt
-            </Button>
-            <Button
-              onClick={() => handleCheckAdminSubmit("0")}
-              style={{ backgroundColor: "gray", color: "white" }}
-              type="info"
-            >
-              Chờ duyệt 
-            </Button>
-          </div>
+      <div className={cx("box")} style={{ visibility: selectId.length > 0 ? "" : "hidden" }}>
+        <div className={cx("box-button")}>
+          <Button
+            onClick={() => handleCheckAdminSubmit("1")}
+            style={{
+              backgroundColor: "green",
+              color: "white",
+              marginRight: "10px",
+            }}
+            type="primary"
+          >
+            Duyệt
+          </Button>
+          <Button
+            onClick={() => handleCheckAdminSubmit("2")}
+            style={{ backgroundColor: "red", color: "white", marginRight: "10px", }}
+            type="error"
+          >
+            Không duyệt
+          </Button>
+          <Button
+            onClick={() => handleCheckAdminSubmit("0")}
+            style={{ backgroundColor: "gray", color: "white" }}
+            type="info"
+          >
+            Chờ duyệt
+          </Button>
         </div>
+      </div>
       <Table
         ref={tableRef}
         className={cx("table")}
