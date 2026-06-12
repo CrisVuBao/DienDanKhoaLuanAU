@@ -1,5 +1,6 @@
-﻿using UniBase.Models;
+using UniBase.Models;
 using UniBase.Respositories;
+using UniBase.Interfaces;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
@@ -53,10 +54,8 @@ builder.Services.Configure<KestrelServerOptions>(options => options.Limits.MaxRe
 
 // Dependency Injection
 builder.Services.AddScoped<IUserRespositores, UserRespositores>();
-builder.Services.AddScoped<IClassRespositories, ClassRespositories>();
 builder.Services.AddScoped<IDeparmentRespotories, DeparmentRespotories>();
 builder.Services.AddScoped<ISpecializedRespositories, SpecializedRespositories>();
-builder.Services.AddScoped<ISchoolYearRespositories, SchoolYearRespositories>();
 builder.Services.AddScoped<IForumRespositories, ForumRespositories>();
 builder.Services.AddScoped<ICommentRespositories, CommentRespositories>();
 builder.Services.AddScoped<IEvaluateRespositories, EvaluateRespositories>();

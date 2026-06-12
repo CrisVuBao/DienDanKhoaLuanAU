@@ -1,4 +1,4 @@
-﻿using UniBase.Models;
+using UniBase.Models;
 
 namespace UniBase.DTO
 {
@@ -18,6 +18,7 @@ namespace UniBase.DTO
         
         public DateTime? CreatedDate { get; set; }
         public int? SchoolYearId { get; set; }
+        public int? DepartmentId { get; set; }
 
         public IFormFile? ImageFile { get; set; }
     }

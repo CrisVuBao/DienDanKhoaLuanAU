@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace UniBase.Models
@@ -7,18 +7,18 @@ namespace UniBase.Models
     {
         public Department()
         {
-            Classes = new HashSet<Class>();
             Specializeds = new HashSet<Specialized>();
             Users = new HashSet<User>();
+            ProjectLists = new HashSet<ProjectList>();
         }
 
         public int DepartmentId { get; set; }
         public string? Name { get; set; }
         [System.Text.Json.Serialization.JsonIgnore]
-        public virtual ICollection<Class> Classes { get; set; }
-        [System.Text.Json.Serialization.JsonIgnore]
         public virtual ICollection<Specialized> Specializeds { get; set; }
         [System.Text.Json.Serialization.JsonIgnore]
         public virtual ICollection<User> Users { get; set; }
+        [System.Text.Json.Serialization.JsonIgnore]
+        public virtual ICollection<ProjectList> ProjectLists { get; set; }
     }
 }

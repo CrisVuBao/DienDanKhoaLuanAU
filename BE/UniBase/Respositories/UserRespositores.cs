@@ -1,7 +1,8 @@
-﻿using UniBase.DTO;
+using UniBase.DTO;
 using UniBase.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using UniBase.Interfaces;
 
 namespace UniBase.Respositories
 {
@@ -17,14 +18,12 @@ namespace UniBase.Respositories
         public async Task<List<User>> getAll()
         {
             var users = await _context.Users
-                .Include(u => u.Class)
                 .Include(u => u.Department)
                 .Include(u => u.Specialized)
                 .ToListAsync();
 
             foreach (var user in users)
             {
-                user.ClassName = user.Class?.Name;
                 user.DepartmentName = user.Department?.Name;
                 user.SpecializedName = user.Specialized?.Name;
             }
@@ -243,14 +242,12 @@ namespace UniBase.Respositories
             try
             {
                 var user = await _context.Users
-                    .Include(u => u.Class)
                     .Include(u => u.Department)
                     .Include(u => u.Specialized)
                     .FirstOrDefaultAsync(u => u.UserId == userId);
 
                 if (user != null)
                 {
-                    user.ClassName = user.Class?.Name;
                     user.DepartmentName = user.Department?.Name;
                     user.SpecializedName = user.Specialized?.Name;
                 }
@@ -299,7 +296,6 @@ namespace UniBase.Respositories
             try
             {
                 var users = await _context.Users
-                    .Include(u => u.Class)
                     .Include(u => u.Department)
                     .Include(u => u.Specialized)
                     .Where(u => u.Name.Contains(userName))
@@ -307,7 +303,6 @@ namespace UniBase.Respositories
 
                 foreach (var user in users)
                 {
-                    user.ClassName = user.Class?.Name;
                     user.DepartmentName = user.Department?.Name;
                     user.SpecializedName = user.Specialized?.Name;
                 }
@@ -331,7 +326,6 @@ namespace UniBase.Respositories
                     .FirstOrDefaultAsync();
                 if (user != null)
                 {
-                    user.ClassName = user.Class?.Name;
                     user.DepartmentName = user.Department?.Name;
                     user.SpecializedName = user.Specialized?.Name;
                 }

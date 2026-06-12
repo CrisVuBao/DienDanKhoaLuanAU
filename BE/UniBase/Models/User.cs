@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -37,8 +37,6 @@ namespace UniBase.Models
         public string? Sex { get; set; }
         public string? Image { get; set; }
 
-        [System.Text.Json.Serialization.JsonIgnore]
-        public virtual Class? Class { get; set; }
         [System.Text.Json.Serialization.JsonIgnore]
         public virtual Department? Department { get; set; }
         [System.Text.Json.Serialization.JsonIgnore]

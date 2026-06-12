@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 
 using UniBase.Respositories;
+using UniBase.Interfaces;
 using Microsoft.AspNetCore.Cors;
 using UniBase.Models;
 using Microsoft.EntityFrameworkCore;

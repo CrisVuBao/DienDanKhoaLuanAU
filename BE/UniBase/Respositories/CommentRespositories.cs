@@ -1,5 +1,6 @@
-﻿using UniBase.Models;
+using UniBase.Models;
 using Microsoft.EntityFrameworkCore;
+using UniBase.Interfaces;
 
 namespace UniBase.Respositories
 {
@@ -232,8 +233,7 @@ namespace UniBase.Respositories
                 var comments = await _context.Comments
                 .Where(c => c.CommentType == CommentType && c.PostId == PostId && c.ByCommentId == null )
                 .Include(c => c.User)
-                .ThenInclude(u => u.Class)
-                .Where(c => c.User != null && c.User.Class != null)
+                .Where(c => c.User != null)
                 .Select(c => new Comment
                 {
                     CommentId = c.CommentId,
@@ -246,8 +246,7 @@ namespace UniBase.Respositories
                     PostId = c.PostId,
                     ByCommentId = c.ByCommentId,
                     checkComment = c.User.checkComment,
-                    UserGroup = c.User.UserGroup,
-                    ClassName = c.User.Class.Name
+                    UserGroup = c.User.UserGroup
 
                 })
                 .ToListAsync();
@@ -297,8 +296,7 @@ namespace UniBase.Respositories
                 var comments = await _context.Comments
                 .Where(c => c.CommentType == CommentType && c.PostId == PostId && c.ByCommentId == byUserId)
                 .Include(c => c.User)
-                .ThenInclude(u => u.Class)
-                .Where(c => c.User != null && c.User.Class != null)
+                .Where(c => c.User != null)
                 .Select(c => new Comment
                 {
                     CommentId = c.CommentId,
@@ -311,8 +309,7 @@ namespace UniBase.Respositories
                     PostId = c.PostId,
                     ByCommentId = c.ByCommentId,
                     checkComment = c.User.checkComment,
-                    UserGroup = c.User.UserGroup,
-                    ClassName = c.User.Class.Name
+                    UserGroup = c.User.UserGroup
                     
                 })
                 .ToListAsync();
@@ -335,8 +332,7 @@ namespace UniBase.Respositories
                 var comments = await _context.Comments
                 .Where(c => c.CommentType == CommentType && c.PostId == PostId && c.ByCommentId != null)
                 .Include(c => c.User)
-                .ThenInclude(u => u.Class)
-                .Where(c => c.User != null && c.User.Class != null)
+                .Where(c => c.User != null)
                 .Select(c => new Comment
                 {
                     CommentId = c.CommentId,
@@ -350,8 +346,7 @@ namespace UniBase.Respositories
                     ByCommentId = c.ByCommentId,
                     /* Evaluate = c.Evaluate,*/
                     UserGroup = c.User.UserGroup,
-                    checkComment = c.User.checkComment,
-                    ClassName = c.User.Class.Name
+                    checkComment = c.User.checkComment
                   
 
                 })

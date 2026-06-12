@@ -1,8 +1,9 @@
-﻿using UniBase.DTO;
+using UniBase.DTO;
 using UniBase.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Xml.Linq;
+using UniBase.Interfaces;
 
 namespace UniBase.Respositories
 {
@@ -102,6 +103,7 @@ namespace UniBase.Respositories
                         UserId = newProject.UserId,
                         Discriptions = newProject.Discriptions,
                         SchoolYearId = newProject.SchoolYearId,
+                        DepartmentId = newProject.DepartmentId,
                         CreatedDate = newProject.CreatedDate,
                         Image = fileName
                     };
@@ -141,6 +143,7 @@ namespace UniBase.Respositories
                 existingProject.Discriptions = updatedProject.Discriptions ?? existingProject.Discriptions;
                 existingProject.CreatedDate = updatedProject.CreatedDate ?? existingProject.CreatedDate;
                 existingProject.SchoolYearId = updatedProject.SchoolYearId ?? existingProject.SchoolYearId;
+                existingProject.DepartmentId = updatedProject.DepartmentId ?? existingProject.DepartmentId;
 
                 // Nếu có file hình ảnh mới, xử lý nó
                 if (updatedProject.ImageFile != null && updatedProject.ImageFile.Length > 0)
@@ -328,8 +331,7 @@ namespace UniBase.Respositories
             {
                 var projects = await _context.ProjectLists
                     .Include(p => p.User)
-                    .ThenInclude(u => u.Department)
-                    .Where(p => p.User != null && p.User.DepartmentId == departmentId && p.CheckAdmin == 1)
+                    .Where(p => p.DepartmentId == departmentId && p.CheckAdmin == 1)
                     .OrderByDescending(p => p.CreatedDate)
                     .ToListAsync();
 
@@ -353,8 +355,7 @@ namespace UniBase.Respositories
             {
                 var projects = await _context.ProjectLists
                     .Include(p => p.User)
-                    .ThenInclude(u => u.Department)
-                    .Where(p => p.User != null && p.User.DepartmentId == departmentId && p.Name.Contains(name) && p.CheckAdmin == 1)
+                    .Where(p => p.DepartmentId == departmentId && p.Name.Contains(name) && p.CheckAdmin == 1)
                     .OrderByDescending(p => p.CreatedDate)
                     .ToListAsync();
 

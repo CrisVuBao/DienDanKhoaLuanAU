@@ -1,6 +1,7 @@
 ﻿using UniBase.Models;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.Design;
+using UniBase.Interfaces;
 
 namespace UniBase.Respositories
 {

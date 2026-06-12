@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -21,9 +21,10 @@ namespace UniBase.Models
         public int? Download { get; set; }
         public DateTime? CreatedDate { get; set; }
         public int? SchoolYearId { get; set; }
+        public int? DepartmentId { get; set; }
 
         [System.Text.Json.Serialization.JsonIgnore]
-        public virtual SchoolYear? SchoolYear { get; set; }
+        public virtual Department? Department { get; set; }
         [System.Text.Json.Serialization.JsonIgnore]
         public virtual User? User { get; set; } = null!;
     }

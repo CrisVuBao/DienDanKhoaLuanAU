@@ -1,5 +1,6 @@
-﻿using UniBase.Models;
+using UniBase.Models;
 using Microsoft.EntityFrameworkCore;
+using UniBase.Interfaces;
 
 namespace UniBase.Respositories
 {
@@ -211,8 +212,7 @@ namespace UniBase.Respositories
                 var commentFeedbacks = await _context.CommentFeedbacks
                 .Where(c => c.CommentType == CommentFeedbackType && c.PostId == PostId)
                 .Include(c => c.User)
-                .ThenInclude(u => u.Class)
-                .Where(c => c.User != null && c.User.Class != null)
+                .Where(c => c.User != null)
                 .Select(c => new CommentFeedback
                 {
                     CommentId = c.CommentId,
@@ -223,8 +223,7 @@ namespace UniBase.Respositories
                     Discriptions = c.Discriptions,
                     CommentType = c.CommentType,
                     PostId = c.PostId,
-                    UserGroup = c.User.UserGroup,
-                    ClassName = c.User.Class.Name
+                    UserGroup = c.User.UserGroup
 
                 })
                 .ToListAsync();

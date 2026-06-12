@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -16,13 +16,11 @@ namespace UniBase.Models
         {
         }
 
-        public virtual DbSet<Class> Classes { get; set; } = null!;
         public virtual DbSet<Comment> Comments { get; set; } = null!;
         public virtual DbSet<Department> Departments { get; set; } = null!;
         public virtual DbSet<Evaluate> Evaluates { get; set; } = null!;
         public virtual DbSet<Forum> Forums { get; set; } = null!;
         public virtual DbSet<ProjectList> ProjectLists { get; set; } = null!;
-        public virtual DbSet<SchoolYear> SchoolYears { get; set; } = null!;
         public virtual DbSet<Specialized> Specializeds { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
         public virtual DbSet<UserGroup> UserGroups { get; set; } = null!;
@@ -40,28 +38,6 @@ namespace UniBase.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Class>(entity =>
-            {
-                entity.ToTable("Class");
-
-                entity.Property(e => e.Name).HasMaxLength(100);
-
-                entity.HasOne(d => d.Department)
-                    .WithMany(p => p.Classes)
-                    .HasForeignKey(d => d.DepartmentId)
-                    .HasConstraintName("FK_Class_Department");
-
-                entity.HasOne(d => d.SchoolYear)
-                    .WithMany(p => p.Classes)
-                    .HasForeignKey(d => d.SchoolYearId)
-                    .HasConstraintName("FK_Class_SchoolYear");
-
-                entity.HasOne(d => d.Specialized)
-                    .WithMany(p => p.Classes)
-                    .HasForeignKey(d => d.SpecializedId)
-                    .HasConstraintName("FK_Class_Specialized");
-            });
-
             modelBuilder.Entity<Comment>(entity =>
             {
                 entity.ToTable("Comment");
@@ -102,23 +78,16 @@ namespace UniBase.Models
 
                 entity.Property(e => e.Point).HasMaxLength(3);
 
-                entity.HasOne(d => d.SchoolYear)
+                entity.HasOne(d => d.Department)
                     .WithMany(p => p.ProjectLists)
-                    .HasForeignKey(d => d.SchoolYearId)
-                    .HasConstraintName("FK_ProjectList_SchoolYear");
+                    .HasForeignKey(d => d.DepartmentId)
+                    .HasConstraintName("FK_ProjectList_Department");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.ProjectLists)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_ProjectList_User");
-            });
-
-            modelBuilder.Entity<SchoolYear>(entity =>
-            {
-                entity.ToTable("SchoolYear");
-
-                entity.Property(e => e.Name).HasMaxLength(100);
             });
 
             modelBuilder.Entity<Specialized>(entity =>
@@ -140,11 +109,6 @@ namespace UniBase.Models
                 entity.Property(e => e.PhoneNumber).HasMaxLength(11);
 
                 entity.Property(e => e.UserGroup).HasMaxLength(100);
-
-                entity.HasOne(d => d.Class)
-                    .WithMany(p => p.Users)
-                    .HasForeignKey(d => d.ClassId)
-                    .HasConstraintName("FK_User_Class");
 
                 entity.HasOne(d => d.Department)
                     .WithMany(p => p.Users)
@@ -188,5 +152,3 @@ namespace UniBase.Models
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }
-
-          
