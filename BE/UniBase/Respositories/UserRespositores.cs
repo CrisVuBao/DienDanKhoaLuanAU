@@ -83,7 +83,6 @@ namespace UniBase.Respositories
                     DateOfBirth = newUser.DateOfBirth ,
                     Sex = newUser.Sex ?? "" ,
                     checkComment = newUser.checkComment ?? 0,
-                    ClassId = newUser.ClassId ,
                     DepartmentId = newUser.DepartmentId,
                     Image = fileName 
 
@@ -122,7 +121,6 @@ namespace UniBase.Respositories
                 existingUser.Sex = updatedUser.Sex;
 
                 
-                existingUser.ClassId = updatedUser.ClassId;
                 existingUser.DepartmentId = updatedUser.DepartmentId;
 
                 if (updatedUser.ImageFile != null )

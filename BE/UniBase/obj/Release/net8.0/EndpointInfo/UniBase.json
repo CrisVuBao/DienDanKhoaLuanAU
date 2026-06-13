@@ -2208,10 +2208,6 @@
                     "type": "integer",
                     "format": "int32"
                   },
-                  "ClassId": {
-                    "type": "integer",
-                    "format": "int32"
-                  },
                   "Name": {
                     "type": "string"
                   },
@@ -2251,9 +2247,6 @@
                   "style": "form"
                 },
                 "DepartmentId": {
-                  "style": "form"
-                },
-                "ClassId": {
                   "style": "form"
                 },
                 "Name": {
@@ -2327,10 +2320,6 @@
                     "type": "integer",
                     "format": "int32"
                   },
-                  "ClassId": {
-                    "type": "integer",
-                    "format": "int32"
-                  },
                   "Name": {
                     "type": "string"
                   },
@@ -2370,9 +2359,6 @@
                   "style": "form"
                 },
                 "DepartmentId": {
-                  "style": "form"
-                },
-                "ClassId": {
                   "style": "form"
                 },
                 "Name": {
@@ -2715,11 +2701,6 @@
             "nullable": true
           },
           "DepartmentId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "ClassId": {
             "type": "integer",
             "format": "int32",
             "nullable": true

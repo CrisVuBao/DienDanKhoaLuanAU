@@ -19,7 +19,6 @@ namespace UniBase.Models
         public int? checkComment { get; set; }
         
         public int? DepartmentId { get; set; }
-        public int? ClassId { get; set; }
         public string? Name { get; set; } = null!;
         public string? Address { get; set; }
         public DateTime? DateOfBirth { get; set; }
