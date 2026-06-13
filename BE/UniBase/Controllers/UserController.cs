@@ -41,7 +41,6 @@ namespace UniBase.Controllers
                     result.Add(new
                     {
                         UserId = user.Id,
-                        user.UserName,
                         Username = user.UserName,
                         user.Name,
                         user.Email,
